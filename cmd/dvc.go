@@ -9,7 +9,11 @@ import (
 
 	"github.com/golang/glog"
 
-	"github.com/gangwn/dvc/internal/pkg/config"
+	"github.com/gangwn/dvc/internal/pkg/ccs/config"
+	"github.com/gangwn/dvc/pkg/util"
+
+		"github.com/gangwn/dvc/internal/pkg/ccs/controler"
+	"github.com/gangwn/dvc/pkg/net/basic"
 )
 
 type options struct {
@@ -41,20 +45,25 @@ func main() {
 		return
 	}
 
-	glog.Infof("Config path is %v", cfg.Net.LisAddrs)
+	glog.Infof("Listen address is %v", cfg.Net.LisAddrs)
 
-	// var maddrs []ma.Multiaddr
-	// if *bindIPs != "" {
-	// 	maddrs = make([]ma.Multiaddr, 0)
-	// 	mas := strings.Split(*bindIPs, ",")
-	// 	i := 0
-	// 	for _, m := range mas {
-	// 		addr, err := ma.NewMultiaddr(m)
-	// 		if err != nil {
-	// 			glog.Errorf("Error creating bindIP %v to multiaddr: %v", m, err)
-	// 			continue // nonfatal
-	// 		}
-	// 		maddrs = append(maddrs, addr)
-	// 		i++
-	// 	}
+	addr := util.NewMultiaddr(cfg.Net.LisAddrs)
+	_, priv, err := util.LoadKeyPair(cfg.Key.Dir)
+	if err != nil {
+		return
+	}
+
+	node := basic.NewBasicNode(addr, priv)
+	if node == nil {
+		return
+	}
+
+	glog.Infof("Local address: /ip4/%s/tcp/%d/ipfs/%s", cfg.Net.LisAddrs[0].IP, cfg.Net.LisAddrs[0].Port, node.ID().Pretty())
+
+	controler := controler.NewControler(node)
+	if controler == nil {
+		return
+	}
+
+	select {}
 }

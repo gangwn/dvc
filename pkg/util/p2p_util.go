@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path"
-	"peermeet/pkg/config"
+	"github.com/gangwn/dvc/internal/pkg/ccs/config"
 
 	"github.com/golang/glog"
 	crypto "github.com/libp2p/go-libp2p-crypto"

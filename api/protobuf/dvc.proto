@@ -2,17 +2,23 @@ syntax = "proto3";
 package dvc.protocol;
 
 
+message ConnectMessage {
+	string user_id = 1;
+}
+
 message JoinConferenceMessage {
 	string user_id = 1;
-	 string name = 2;
-	 string conference_id = 3;
+	string name = 2;
+	string conference_id = 3;
 }
 
 message DVCMessage {
 	enum DVCMessageType {
-		JoinConference = 0;
+	    Connect = 0;
+		JoinConference = 1;
 	}
 
 	DVCMessageType type = 1;
-	JoinConferenceMessage join_conf_msg = 2;
+	ConnectMessage conn_msg = 2;
+	JoinConferenceMessage join_conf_msg = 3;
 }
