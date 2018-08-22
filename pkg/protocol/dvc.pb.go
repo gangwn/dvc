@@ -18,68 +18,65 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+type Participant_State int32
+
+const (
+	Participant_Joined Participant_State = 0
+	Participant_Left   Participant_State = 1
+)
+
+var Participant_State_name = map[int32]string{
+	0: "Joined",
+	1: "Left",
+}
+var Participant_State_value = map[string]int32{
+	"Joined": 0,
+	"Left":   1,
+}
+
+func (x Participant_State) String() string {
+	return proto.EnumName(Participant_State_name, int32(x))
+}
+func (Participant_State) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{2, 0}
+}
+
 type DVCMessage_DVCMessageType int32
 
 const (
-	DVCMessage_Connect        DVCMessage_DVCMessageType = 0
-	DVCMessage_JoinConference DVCMessage_DVCMessageType = 1
+	DVCMessage_JoinConferenceRequest  DVCMessage_DVCMessageType = 0
+	DVCMessage_LeaveConferenceRequest DVCMessage_DVCMessageType = 1
+	DVCMessage_EndConferenceRequest   DVCMessage_DVCMessageType = 2
+	DVCMessage_Chat                   DVCMessage_DVCMessageType = 3
+	DVCMessage_RosterMessage          DVCMessage_DVCMessageType = 4
+	DVCMessage_JoinConferenceResponse DVCMessage_DVCMessageType = 100
 )
 
 var DVCMessage_DVCMessageType_name = map[int32]string{
-	0: "Connect",
-	1: "JoinConference",
+	0:   "JoinConferenceRequest",
+	1:   "LeaveConferenceRequest",
+	2:   "EndConferenceRequest",
+	3:   "Chat",
+	4:   "RosterMessage",
+	100: "JoinConferenceResponse",
 }
 var DVCMessage_DVCMessageType_value = map[string]int32{
-	"Connect":        0,
-	"JoinConference": 1,
+	"JoinConferenceRequest":  0,
+	"LeaveConferenceRequest": 1,
+	"EndConferenceRequest":   2,
+	"Chat":                   3,
+	"RosterMessage":          4,
+	"JoinConferenceResponse": 100,
 }
 
 func (x DVCMessage_DVCMessageType) String() string {
 	return proto.EnumName(DVCMessage_DVCMessageType_name, int32(x))
 }
 func (DVCMessage_DVCMessageType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_dvc_f454a00f565422a7, []int{2, 0}
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{7, 0}
 }
 
-type ConnectMessage struct {
-	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ConnectMessage) Reset()         { *m = ConnectMessage{} }
-func (m *ConnectMessage) String() string { return proto.CompactTextString(m) }
-func (*ConnectMessage) ProtoMessage()    {}
-func (*ConnectMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dvc_f454a00f565422a7, []int{0}
-}
-func (m *ConnectMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ConnectMessage.Unmarshal(m, b)
-}
-func (m *ConnectMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ConnectMessage.Marshal(b, m, deterministic)
-}
-func (dst *ConnectMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConnectMessage.Merge(dst, src)
-}
-func (m *ConnectMessage) XXX_Size() int {
-	return xxx_messageInfo_ConnectMessage.Size(m)
-}
-func (m *ConnectMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_ConnectMessage.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ConnectMessage proto.InternalMessageInfo
-
-func (m *ConnectMessage) GetUserId() string {
-	if m != nil {
-		return m.UserId
-	}
-	return ""
-}
-
-type JoinConferenceMessage struct {
+type JoinConferenceRequest struct {
 	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	ConferenceId         string   `protobuf:"bytes,3,opt,name=conference_id,json=conferenceId,proto3" json:"conference_id,omitempty"`
@@ -88,55 +85,343 @@ type JoinConferenceMessage struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *JoinConferenceMessage) Reset()         { *m = JoinConferenceMessage{} }
-func (m *JoinConferenceMessage) String() string { return proto.CompactTextString(m) }
-func (*JoinConferenceMessage) ProtoMessage()    {}
-func (*JoinConferenceMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dvc_f454a00f565422a7, []int{1}
+func (m *JoinConferenceRequest) Reset()         { *m = JoinConferenceRequest{} }
+func (m *JoinConferenceRequest) String() string { return proto.CompactTextString(m) }
+func (*JoinConferenceRequest) ProtoMessage()    {}
+func (*JoinConferenceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{0}
 }
-func (m *JoinConferenceMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_JoinConferenceMessage.Unmarshal(m, b)
+func (m *JoinConferenceRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_JoinConferenceRequest.Unmarshal(m, b)
 }
-func (m *JoinConferenceMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_JoinConferenceMessage.Marshal(b, m, deterministic)
+func (m *JoinConferenceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_JoinConferenceRequest.Marshal(b, m, deterministic)
 }
-func (dst *JoinConferenceMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_JoinConferenceMessage.Merge(dst, src)
+func (dst *JoinConferenceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_JoinConferenceRequest.Merge(dst, src)
 }
-func (m *JoinConferenceMessage) XXX_Size() int {
-	return xxx_messageInfo_JoinConferenceMessage.Size(m)
+func (m *JoinConferenceRequest) XXX_Size() int {
+	return xxx_messageInfo_JoinConferenceRequest.Size(m)
 }
-func (m *JoinConferenceMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_JoinConferenceMessage.DiscardUnknown(m)
+func (m *JoinConferenceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_JoinConferenceRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_JoinConferenceMessage proto.InternalMessageInfo
+var xxx_messageInfo_JoinConferenceRequest proto.InternalMessageInfo
 
-func (m *JoinConferenceMessage) GetUserId() string {
+func (m *JoinConferenceRequest) GetUserId() string {
 	if m != nil {
 		return m.UserId
 	}
 	return ""
 }
 
-func (m *JoinConferenceMessage) GetName() string {
+func (m *JoinConferenceRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *JoinConferenceMessage) GetConferenceId() string {
+func (m *JoinConferenceRequest) GetConferenceId() string {
 	if m != nil {
 		return m.ConferenceId
 	}
 	return ""
 }
 
+type JoinConferenceResponse struct {
+	Result               int32    `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *JoinConferenceResponse) Reset()         { *m = JoinConferenceResponse{} }
+func (m *JoinConferenceResponse) String() string { return proto.CompactTextString(m) }
+func (*JoinConferenceResponse) ProtoMessage()    {}
+func (*JoinConferenceResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{1}
+}
+func (m *JoinConferenceResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_JoinConferenceResponse.Unmarshal(m, b)
+}
+func (m *JoinConferenceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_JoinConferenceResponse.Marshal(b, m, deterministic)
+}
+func (dst *JoinConferenceResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_JoinConferenceResponse.Merge(dst, src)
+}
+func (m *JoinConferenceResponse) XXX_Size() int {
+	return xxx_messageInfo_JoinConferenceResponse.Size(m)
+}
+func (m *JoinConferenceResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_JoinConferenceResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_JoinConferenceResponse proto.InternalMessageInfo
+
+func (m *JoinConferenceResponse) GetResult() int32 {
+	if m != nil {
+		return m.Result
+	}
+	return 0
+}
+
+type Participant struct {
+	UserId               string            `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Name                 string            `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	State                Participant_State `protobuf:"varint,3,opt,name=state,proto3,enum=dvc.protocol.Participant_State" json:"state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *Participant) Reset()         { *m = Participant{} }
+func (m *Participant) String() string { return proto.CompactTextString(m) }
+func (*Participant) ProtoMessage()    {}
+func (*Participant) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{2}
+}
+func (m *Participant) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Participant.Unmarshal(m, b)
+}
+func (m *Participant) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Participant.Marshal(b, m, deterministic)
+}
+func (dst *Participant) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Participant.Merge(dst, src)
+}
+func (m *Participant) XXX_Size() int {
+	return xxx_messageInfo_Participant.Size(m)
+}
+func (m *Participant) XXX_DiscardUnknown() {
+	xxx_messageInfo_Participant.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Participant proto.InternalMessageInfo
+
+func (m *Participant) GetUserId() string {
+	if m != nil {
+		return m.UserId
+	}
+	return ""
+}
+
+func (m *Participant) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Participant) GetState() Participant_State {
+	if m != nil {
+		return m.State
+	}
+	return Participant_Joined
+}
+
+type RosterMessage struct {
+	Participants         []*Participant `protobuf:"bytes,1,rep,name=participants,proto3" json:"participants,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *RosterMessage) Reset()         { *m = RosterMessage{} }
+func (m *RosterMessage) String() string { return proto.CompactTextString(m) }
+func (*RosterMessage) ProtoMessage()    {}
+func (*RosterMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{3}
+}
+func (m *RosterMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RosterMessage.Unmarshal(m, b)
+}
+func (m *RosterMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RosterMessage.Marshal(b, m, deterministic)
+}
+func (dst *RosterMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RosterMessage.Merge(dst, src)
+}
+func (m *RosterMessage) XXX_Size() int {
+	return xxx_messageInfo_RosterMessage.Size(m)
+}
+func (m *RosterMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_RosterMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RosterMessage proto.InternalMessageInfo
+
+func (m *RosterMessage) GetParticipants() []*Participant {
+	if m != nil {
+		return m.Participants
+	}
+	return nil
+}
+
+type LeaveConferenceRequest struct {
+	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ConferenceId         string   `protobuf:"bytes,2,opt,name=conference_id,json=conferenceId,proto3" json:"conference_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LeaveConferenceRequest) Reset()         { *m = LeaveConferenceRequest{} }
+func (m *LeaveConferenceRequest) String() string { return proto.CompactTextString(m) }
+func (*LeaveConferenceRequest) ProtoMessage()    {}
+func (*LeaveConferenceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{4}
+}
+func (m *LeaveConferenceRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LeaveConferenceRequest.Unmarshal(m, b)
+}
+func (m *LeaveConferenceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LeaveConferenceRequest.Marshal(b, m, deterministic)
+}
+func (dst *LeaveConferenceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LeaveConferenceRequest.Merge(dst, src)
+}
+func (m *LeaveConferenceRequest) XXX_Size() int {
+	return xxx_messageInfo_LeaveConferenceRequest.Size(m)
+}
+func (m *LeaveConferenceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_LeaveConferenceRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LeaveConferenceRequest proto.InternalMessageInfo
+
+func (m *LeaveConferenceRequest) GetUserId() string {
+	if m != nil {
+		return m.UserId
+	}
+	return ""
+}
+
+func (m *LeaveConferenceRequest) GetConferenceId() string {
+	if m != nil {
+		return m.ConferenceId
+	}
+	return ""
+}
+
+type EndConferenceRequest struct {
+	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ConferenceId         string   `protobuf:"bytes,2,opt,name=conference_id,json=conferenceId,proto3" json:"conference_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EndConferenceRequest) Reset()         { *m = EndConferenceRequest{} }
+func (m *EndConferenceRequest) String() string { return proto.CompactTextString(m) }
+func (*EndConferenceRequest) ProtoMessage()    {}
+func (*EndConferenceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{5}
+}
+func (m *EndConferenceRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EndConferenceRequest.Unmarshal(m, b)
+}
+func (m *EndConferenceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EndConferenceRequest.Marshal(b, m, deterministic)
+}
+func (dst *EndConferenceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EndConferenceRequest.Merge(dst, src)
+}
+func (m *EndConferenceRequest) XXX_Size() int {
+	return xxx_messageInfo_EndConferenceRequest.Size(m)
+}
+func (m *EndConferenceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_EndConferenceRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EndConferenceRequest proto.InternalMessageInfo
+
+func (m *EndConferenceRequest) GetUserId() string {
+	if m != nil {
+		return m.UserId
+	}
+	return ""
+}
+
+func (m *EndConferenceRequest) GetConferenceId() string {
+	if m != nil {
+		return m.ConferenceId
+	}
+	return ""
+}
+
+type ChatMessage struct {
+	FromUserId           string   `protobuf:"bytes,1,opt,name=from_user_id,json=fromUserId,proto3" json:"from_user_id,omitempty"`
+	ToUserId             string   `protobuf:"bytes,2,opt,name=to_user_id,json=toUserId,proto3" json:"to_user_id,omitempty"`
+	ConferenceId         string   `protobuf:"bytes,3,opt,name=conference_id,json=conferenceId,proto3" json:"conference_id,omitempty"`
+	Content              string   `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ChatMessage) Reset()         { *m = ChatMessage{} }
+func (m *ChatMessage) String() string { return proto.CompactTextString(m) }
+func (*ChatMessage) ProtoMessage()    {}
+func (*ChatMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{6}
+}
+func (m *ChatMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ChatMessage.Unmarshal(m, b)
+}
+func (m *ChatMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ChatMessage.Marshal(b, m, deterministic)
+}
+func (dst *ChatMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChatMessage.Merge(dst, src)
+}
+func (m *ChatMessage) XXX_Size() int {
+	return xxx_messageInfo_ChatMessage.Size(m)
+}
+func (m *ChatMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChatMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChatMessage proto.InternalMessageInfo
+
+func (m *ChatMessage) GetFromUserId() string {
+	if m != nil {
+		return m.FromUserId
+	}
+	return ""
+}
+
+func (m *ChatMessage) GetToUserId() string {
+	if m != nil {
+		return m.ToUserId
+	}
+	return ""
+}
+
+func (m *ChatMessage) GetConferenceId() string {
+	if m != nil {
+		return m.ConferenceId
+	}
+	return ""
+}
+
+func (m *ChatMessage) GetContent() string {
+	if m != nil {
+		return m.Content
+	}
+	return ""
+}
+
 type DVCMessage struct {
 	Type                 DVCMessage_DVCMessageType `protobuf:"varint,1,opt,name=type,proto3,enum=dvc.protocol.DVCMessage_DVCMessageType" json:"type,omitempty"`
-	ConnMsg              *ConnectMessage           `protobuf:"bytes,2,opt,name=conn_msg,json=connMsg,proto3" json:"conn_msg,omitempty"`
-	JoinConfMsg          *JoinConferenceMessage    `protobuf:"bytes,3,opt,name=join_conf_msg,json=joinConfMsg,proto3" json:"join_conf_msg,omitempty"`
+	JoinConfReq          *JoinConferenceRequest    `protobuf:"bytes,2,opt,name=join_conf_req,json=joinConfReq,proto3" json:"join_conf_req,omitempty"`
+	LeaveConfReq         *LeaveConferenceRequest   `protobuf:"bytes,3,opt,name=leave_conf_req,json=leaveConfReq,proto3" json:"leave_conf_req,omitempty"`
+	EndConfReq           *EndConferenceRequest     `protobuf:"bytes,4,opt,name=end_conf_req,json=endConfReq,proto3" json:"end_conf_req,omitempty"`
+	ChatMsg              *ChatMessage              `protobuf:"bytes,5,opt,name=chat_msg,json=chatMsg,proto3" json:"chat_msg,omitempty"`
+	RosterMsg            *RosterMessage            `protobuf:"bytes,6,opt,name=roster_msg,json=rosterMsg,proto3" json:"roster_msg,omitempty"`
+	JoinConfRsp          *JoinConferenceResponse   `protobuf:"bytes,100,opt,name=join_conf_rsp,json=joinConfRsp,proto3" json:"join_conf_rsp,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
 	XXX_unrecognized     []byte                    `json:"-"`
 	XXX_sizecache        int32                     `json:"-"`
@@ -146,7 +431,7 @@ func (m *DVCMessage) Reset()         { *m = DVCMessage{} }
 func (m *DVCMessage) String() string { return proto.CompactTextString(m) }
 func (*DVCMessage) ProtoMessage()    {}
 func (*DVCMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dvc_f454a00f565422a7, []int{2}
+	return fileDescriptor_dvc_9a93b2351eb28c70, []int{7}
 }
 func (m *DVCMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DVCMessage.Unmarshal(m, b)
@@ -170,48 +455,100 @@ func (m *DVCMessage) GetType() DVCMessage_DVCMessageType {
 	if m != nil {
 		return m.Type
 	}
-	return DVCMessage_Connect
+	return DVCMessage_JoinConferenceRequest
 }
 
-func (m *DVCMessage) GetConnMsg() *ConnectMessage {
+func (m *DVCMessage) GetJoinConfReq() *JoinConferenceRequest {
 	if m != nil {
-		return m.ConnMsg
+		return m.JoinConfReq
 	}
 	return nil
 }
 
-func (m *DVCMessage) GetJoinConfMsg() *JoinConferenceMessage {
+func (m *DVCMessage) GetLeaveConfReq() *LeaveConferenceRequest {
 	if m != nil {
-		return m.JoinConfMsg
+		return m.LeaveConfReq
+	}
+	return nil
+}
+
+func (m *DVCMessage) GetEndConfReq() *EndConferenceRequest {
+	if m != nil {
+		return m.EndConfReq
+	}
+	return nil
+}
+
+func (m *DVCMessage) GetChatMsg() *ChatMessage {
+	if m != nil {
+		return m.ChatMsg
+	}
+	return nil
+}
+
+func (m *DVCMessage) GetRosterMsg() *RosterMessage {
+	if m != nil {
+		return m.RosterMsg
+	}
+	return nil
+}
+
+func (m *DVCMessage) GetJoinConfRsp() *JoinConferenceResponse {
+	if m != nil {
+		return m.JoinConfRsp
 	}
 	return nil
 }
 
 func init() {
-	proto.RegisterType((*ConnectMessage)(nil), "dvc.protocol.ConnectMessage")
-	proto.RegisterType((*JoinConferenceMessage)(nil), "dvc.protocol.JoinConferenceMessage")
+	proto.RegisterType((*JoinConferenceRequest)(nil), "dvc.protocol.JoinConferenceRequest")
+	proto.RegisterType((*JoinConferenceResponse)(nil), "dvc.protocol.JoinConferenceResponse")
+	proto.RegisterType((*Participant)(nil), "dvc.protocol.Participant")
+	proto.RegisterType((*RosterMessage)(nil), "dvc.protocol.RosterMessage")
+	proto.RegisterType((*LeaveConferenceRequest)(nil), "dvc.protocol.LeaveConferenceRequest")
+	proto.RegisterType((*EndConferenceRequest)(nil), "dvc.protocol.EndConferenceRequest")
+	proto.RegisterType((*ChatMessage)(nil), "dvc.protocol.ChatMessage")
 	proto.RegisterType((*DVCMessage)(nil), "dvc.protocol.DVCMessage")
+	proto.RegisterEnum("dvc.protocol.Participant_State", Participant_State_name, Participant_State_value)
 	proto.RegisterEnum("dvc.protocol.DVCMessage_DVCMessageType", DVCMessage_DVCMessageType_name, DVCMessage_DVCMessageType_value)
 }
 
-func init() { proto.RegisterFile("dvc.proto", fileDescriptor_dvc_f454a00f565422a7) }
+func init() { proto.RegisterFile("dvc.proto", fileDescriptor_dvc_9a93b2351eb28c70) }
 
-var fileDescriptor_dvc_f454a00f565422a7 = []byte{
-	// 256 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xb1, 0x4b, 0xc3, 0x50,
-	0x10, 0xc6, 0x8d, 0x2d, 0x8d, 0xbd, 0xb4, 0xa1, 0x1c, 0x88, 0x1d, 0x1c, 0x24, 0x1d, 0xd4, 0x25,
-	0x60, 0x1d, 0x1c, 0x1c, 0x23, 0x48, 0x85, 0x2c, 0x41, 0x5c, 0x43, 0x7d, 0x39, 0x43, 0x8a, 0xbd,
-	0x0b, 0x79, 0x51, 0xe8, 0x3f, 0x2f, 0x92, 0xa3, 0xb6, 0x7d, 0x20, 0x74, 0xfb, 0xf2, 0xe5, 0x7e,
-	0xdf, 0x7d, 0xf7, 0x60, 0x58, 0x7c, 0x9b, 0xb8, 0x6e, 0xa4, 0x15, 0x1c, 0xed, 0xa4, 0x91, 0xcf,
-	0xe8, 0x16, 0xc2, 0x44, 0x98, 0xc9, 0xb4, 0x29, 0x59, 0xbb, 0x2c, 0x09, 0x2f, 0xc0, 0xff, 0xb2,
-	0xd4, 0xe4, 0x55, 0x31, 0xf5, 0xae, 0xbc, 0x9b, 0x61, 0x36, 0xe8, 0x3e, 0x17, 0x45, 0x54, 0xc1,
-	0xf9, 0x8b, 0x54, 0x9c, 0x08, 0x7f, 0x50, 0x43, 0x6c, 0xe8, 0x18, 0x81, 0x08, 0x7d, 0x5e, 0xae,
-	0x69, 0x7a, 0xaa, 0xae, 0x6a, 0x9c, 0xc1, 0xd8, 0xec, 0x12, 0x3a, 0xa4, 0xa7, 0x3f, 0x47, 0x7b,
-	0x73, 0x51, 0x44, 0x3f, 0x1e, 0xc0, 0xd3, 0x5b, 0xf2, 0xb7, 0xe0, 0x11, 0xfa, 0xed, 0xa6, 0x26,
-	0x4d, 0x0f, 0xe7, 0xd7, 0xf1, 0xe1, 0x05, 0xf1, 0x7e, 0xee, 0x40, 0xbe, 0x6e, 0x6a, 0xca, 0x14,
-	0xc2, 0x07, 0x38, 0x33, 0xc2, 0x9c, 0xaf, 0x6d, 0xa9, 0x45, 0x82, 0xf9, 0xa5, 0x1b, 0xe0, 0xde,
-	0x9f, 0xf9, 0xdd, 0x74, 0x6a, 0x4b, 0x7c, 0x86, 0xf1, 0x4a, 0x2a, 0xce, 0xbb, 0x66, 0x4a, 0xf7,
-	0x94, 0x9e, 0xb9, 0xf4, 0xbf, 0x4f, 0x92, 0x05, 0xab, 0xad, 0x9d, 0xda, 0x32, 0xba, 0x83, 0xd0,
-	0x6d, 0x86, 0x01, 0xf8, 0xdb, 0xad, 0x93, 0x13, 0x44, 0x08, 0xdd, 0x90, 0x89, 0xf7, 0x3e, 0xd0,
-	0xfc, 0xfb, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xe5, 0xcc, 0x92, 0x9f, 0xb8, 0x01, 0x00, 0x00,
+var fileDescriptor_dvc_9a93b2351eb28c70 = []byte{
+	// 540 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xdf, 0x6f, 0xd3, 0x30,
+	0x10, 0xc7, 0x97, 0x36, 0xfd, 0x75, 0x4d, 0xab, 0x60, 0x41, 0xc9, 0xf8, 0x21, 0xaa, 0x0c, 0x89,
+	0x3d, 0x55, 0xa8, 0xc0, 0x0b, 0x88, 0xa7, 0x0e, 0xc1, 0xa6, 0x0d, 0x21, 0xb3, 0xed, 0x35, 0x0a,
+	0xc9, 0xb5, 0xcb, 0xd4, 0xda, 0x69, 0xec, 0x4e, 0xda, 0xff, 0xc0, 0x03, 0xcf, 0xfc, 0xaf, 0x48,
+	0xc8, 0xce, 0xda, 0xc4, 0x25, 0x7d, 0x98, 0xc4, 0x9b, 0x7d, 0xbe, 0xfb, 0xdc, 0xf9, 0xbe, 0x3e,
+	0x43, 0x27, 0xbe, 0x89, 0x46, 0x69, 0xc6, 0x25, 0x27, 0xce, 0x66, 0x19, 0xf1, 0xb9, 0x9f, 0xc0,
+	0xa3, 0x13, 0x9e, 0xb0, 0x09, 0x67, 0x53, 0xcc, 0x90, 0x45, 0x48, 0x71, 0xb9, 0x42, 0x21, 0xc9,
+	0x63, 0x68, 0xad, 0x04, 0x66, 0x41, 0x12, 0x7b, 0xd6, 0xd0, 0x3a, 0xec, 0xd0, 0xa6, 0xda, 0x1e,
+	0xc7, 0x84, 0x80, 0xcd, 0xc2, 0x05, 0x7a, 0x35, 0x6d, 0xd5, 0x6b, 0x72, 0x00, 0xbd, 0x68, 0x43,
+	0x50, 0x21, 0x75, 0x7d, 0xe8, 0x14, 0xc6, 0xe3, 0xd8, 0x7f, 0x0d, 0x83, 0xed, 0x54, 0x22, 0xe5,
+	0x4c, 0x20, 0x19, 0x40, 0x33, 0x43, 0xb1, 0x9a, 0x4b, 0x9d, 0xaa, 0x41, 0xef, 0x76, 0xfe, 0x2f,
+	0x0b, 0xba, 0xdf, 0xc2, 0x4c, 0x26, 0x51, 0x92, 0x86, 0xec, 0x9e, 0x35, 0xbd, 0x83, 0x86, 0x90,
+	0xa1, 0x44, 0x5d, 0x4b, 0x7f, 0xfc, 0x62, 0x54, 0xbe, 0xf7, 0xa8, 0x84, 0x1d, 0x7d, 0x57, 0x6e,
+	0x34, 0xf7, 0xf6, 0x9f, 0x43, 0x43, 0xef, 0x09, 0x40, 0x53, 0x95, 0x8b, 0xb1, 0xbb, 0x47, 0xda,
+	0x60, 0x9f, 0xe2, 0x54, 0xba, 0x96, 0xff, 0x15, 0x7a, 0x94, 0x0b, 0x89, 0xd9, 0x19, 0x0a, 0x11,
+	0xce, 0x90, 0x7c, 0x04, 0x27, 0x2d, 0x58, 0xc2, 0xb3, 0x86, 0xf5, 0xc3, 0xee, 0x78, 0x7f, 0x67,
+	0x36, 0x6a, 0xb8, 0xfb, 0x97, 0x30, 0x38, 0xc5, 0xf0, 0x06, 0xef, 0x21, 0xc0, 0x3f, 0xcd, 0xae,
+	0x55, 0x34, 0xfb, 0x1c, 0x1e, 0x7e, 0x62, 0xf1, 0xff, 0xa6, 0xfe, 0xb4, 0xa0, 0x3b, 0xb9, 0x0a,
+	0xe5, 0xfa, 0xf2, 0x43, 0x70, 0xa6, 0x19, 0x5f, 0x04, 0x26, 0x12, 0x94, 0xed, 0x22, 0xc7, 0x3e,
+	0x03, 0x90, 0x7c, 0x73, 0x9e, 0x33, 0xdb, 0x92, 0x5f, 0xec, 0x48, 0x5a, 0xf1, 0x6e, 0x88, 0x07,
+	0xad, 0x88, 0x33, 0x89, 0x4c, 0x7a, 0xb6, 0x3e, 0x5e, 0x6f, 0xfd, 0x3f, 0x36, 0xc0, 0xd1, 0xe5,
+	0x64, 0x5d, 0xcd, 0x07, 0xb0, 0xe5, 0x6d, 0x8a, 0xba, 0x8a, 0xfe, 0xf8, 0x95, 0x29, 0x41, 0xe1,
+	0x57, 0x5a, 0x9e, 0xdf, 0xa6, 0x48, 0x75, 0x10, 0xf9, 0x0c, 0xbd, 0x6b, 0x9e, 0xb0, 0x40, 0xa5,
+	0x0e, 0x32, 0x5c, 0xea, 0x5a, 0xbb, 0xe3, 0x03, 0x93, 0x52, 0x39, 0x2b, 0xb4, 0x7b, 0x7d, 0x67,
+	0xa6, 0xb8, 0x24, 0x27, 0xd0, 0x9f, 0x2b, 0x45, 0x0b, 0x52, 0x5d, 0x93, 0x5e, 0x9a, 0xa4, 0x6a,
+	0xd5, 0xa9, 0x33, 0x5f, 0xdb, 0x15, 0xeb, 0x08, 0x1c, 0x64, 0x71, 0x41, 0xb2, 0x35, 0xc9, 0x37,
+	0x49, 0x55, 0x3a, 0x53, 0xc0, 0xdc, 0xaa, 0x28, 0x6f, 0xa1, 0x1d, 0x5d, 0x85, 0x32, 0x58, 0x88,
+	0x99, 0xd7, 0xd0, 0x84, 0xad, 0xe7, 0x59, 0x92, 0x94, 0xb6, 0x94, 0xeb, 0x99, 0x98, 0x91, 0xf7,
+	0x00, 0x99, 0x7e, 0xe9, 0x3a, 0xae, 0xa9, 0xe3, 0x9e, 0x9a, 0x71, 0xc6, 0x24, 0xd0, 0x4e, 0xee,
+	0xae, 0x62, 0xbf, 0x18, 0xcd, 0x14, 0xa9, 0x17, 0x57, 0xb5, 0xa0, 0xfa, 0x37, 0x28, 0x75, 0x53,
+	0xa4, 0xfe, 0x6f, 0x0b, 0xfa, 0xa6, 0x5e, 0x64, 0x7f, 0xc7, 0x97, 0xe5, 0xee, 0x91, 0x27, 0xbb,
+	0xa6, 0xc9, 0xb5, 0x88, 0x57, 0x3d, 0x11, 0x6e, 0x4d, 0x4d, 0xb7, 0xea, 0x80, 0x5b, 0x27, 0x0f,
+	0xb6, 0xa6, 0xdb, 0xb5, 0x15, 0xb2, 0xba, 0x4e, 0x37, 0xfe, 0xd1, 0xd4, 0x57, 0x79, 0xf3, 0x37,
+	0x00, 0x00, 0xff, 0xff, 0x06, 0x10, 0xb6, 0x62, 0x5e, 0x05, 0x00, 0x00,
 }

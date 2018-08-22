@@ -4,33 +4,62 @@ import (
 	"github.com/gangwn/dvc/pkg/net"
 	"github.com/libp2p/go-libp2p-peer"
 	"github.com/gangwn/dvc/pkg/protocol"
-	"github.com/gangwn/dvc/internal/pkg/ccs/roster"
-	"github.com/gangwn/dvc/internal/pkg/ccs/conference"
 	"github.com/golang/glog"
+	"github.com/gangwn/dvc/internal/pkg/ccs/conference"
+	"github.com/gangwn/dvc/internal/pkg/ccs/conference/basic"
 )
 
 type Controler struct {
-	node net.Node
-	roster *roster.Roster
-	conferences map[string]*conference.Conference
+	localNode net.Node
+	conferences map[string]conference.Conference
 }
 
-
 func NewControler(node net.Node) (*Controler) {
-	controler := &Controler{node, nil, make(map[string]*conference.Conference)}
-	controler.node.SetMessageHandler(controler.MessageHandler)
+	controler := &Controler{node, make(map[string]conference.Conference)}
+	controler.localNode.SetMessageHandler(controler.MessageHandler)
 	return controler;
 }
 
 func (controler *Controler) MessageHandler(id peer.ID, message *dvc_protocol.DVCMessage) {
 	glog.Infof("Receive message type %s from id %s", message.Type, id.Pretty() )
 
-
-	if message.GetType() == dvc_protocol.DVCMessage_JoinConference {
-		//controler.conference.JoinConference(message.GetJoinConfMsg())
+	if message.GetType() == dvc_protocol.DVCMessage_JoinConferenceRequest {
+		controler.handleJoinConference(id, message.GetJoinConfReq())
+	} else if message.GetType() == dvc_protocol.DVCMessage_LeaveConferenceRequest {
+		controler.handleLeaveConference(id, message.GetLeaveConfReq())
+	} else if message.GetType() == dvc_protocol.DVCMessage_EndConferenceRequest {
+		controler.handleEndConference(id, message.GetEndConfReq())
+	} else if message.GetType() == dvc_protocol.DVCMessage_Chat {
+		controler.handleChat(id, message.GetChatMsg())
 	}
 }
 
-func (controler *Controler) handleJoinConference(message *dvc_protocol.JoinConferenceMessage) {
+func (controler *Controler) handleJoinConference(id peer.ID, message *dvc_protocol.JoinConferenceRequest) {
+	if conf, ok := controler.conferences[message.ConferenceId]; ok {
+		conf.JoinConference(id, message)
+	} else {
+		conf := basicconference.NewBasicConference(message.ConferenceId, controler.localNode)
+		conf.JoinConference(id, message)
+		
+		controler.conferences[message.ConferenceId] = conf
+	}
+}
 
+func (controler *Controler) handleLeaveConference(id peer.ID, message *dvc_protocol.LeaveConferenceRequest) {
+	if conf, ok := controler.conferences[message.ConferenceId]; ok {
+		conf.LeaveConference(id, message)
+	}
+}
+
+func (controler *Controler) handleEndConference(id peer.ID, message *dvc_protocol.EndConferenceRequest) {
+	if conf, ok := controler.conferences[message.ConferenceId]; ok {
+		conf.EndConference(id, message)
+	}
+	delete(controler.conferences, message.ConferenceId)
+}
+
+func (controler *Controler) handleChat(id peer.ID, message *dvc_protocol.ChatMessage) {
+	if conf, ok := controler.conferences[message.ConferenceId]; ok {
+		conf.Chat(id, message)
+	}
 }

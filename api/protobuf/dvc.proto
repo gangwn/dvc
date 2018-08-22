@@ -1,24 +1,64 @@
 syntax = "proto3";
 package dvc.protocol;
 
-
-message ConnectMessage {
-	string user_id = 1;
-}
-
-message JoinConferenceMessage {
+message JoinConferenceRequest {
 	string user_id = 1;
 	string name = 2;
 	string conference_id = 3;
 }
 
+message JoinConferenceResponse {
+	int32 result = 1;
+}
+
+message Participant {
+	enum State {
+		Joined = 0;
+		Left = 1;
+	}
+
+	string user_id = 1;
+	string name = 2;
+	State state = 3;
+}
+
+message RosterMessage {
+	repeated Participant participants = 1;
+}
+
+message LeaveConferenceRequest {
+	string user_id = 1;
+	string conference_id = 2;
+}
+
+message EndConferenceRequest {
+	string user_id = 1;
+	string conference_id = 2;
+}
+
+message ChatMessage {
+	string from_user_id = 1;
+	string to_user_id = 2;
+	string conference_id = 3;
+	string content = 4;
+}
+
 message DVCMessage {
 	enum DVCMessageType {
-	    Connect = 0;
-		JoinConference = 1;
+		JoinConferenceRequest = 0;
+		LeaveConferenceRequest = 1;
+		EndConferenceRequest = 2;
+		Chat = 3;
+		RosterMessage = 4;
+		JoinConferenceResponse = 100;
 	}
 
 	DVCMessageType type = 1;
-	ConnectMessage conn_msg = 2;
-	JoinConferenceMessage join_conf_msg = 3;
+	JoinConferenceRequest join_conf_req = 2;
+	LeaveConferenceRequest leave_conf_req = 3;
+	EndConferenceRequest end_conf_req = 4;
+	ChatMessage chat_msg = 5;
+	RosterMessage roster_msg = 6;
+
+	JoinConferenceResponse join_conf_rsp = 100;
 }

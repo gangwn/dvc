@@ -26,7 +26,7 @@ func main() {
 
 	message := &dvc_protocol.DVCMessage{}
 	message.Type = dvc_protocol.DVCMessage_JoinConference
-	message.JoinConfMsg = &dvc_protocol.JoinConferenceMessage{}
+	message.JoinConfMsg = &dvc_protocol.JoinConferenceRequest{}
 
 	message.JoinConfMsg.UserId = uuid.NewV4().String()
 	message.JoinConfMsg.ConferenceId = uuid.NewV4().String()
