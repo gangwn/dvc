@@ -14,6 +14,7 @@ import (
 
 		"github.com/gangwn/dvc/internal/pkg/ccs/controler"
 	"github.com/gangwn/dvc/pkg/net/basic"
+	"github.com/gangwn/dvc/pkg/eth"
 )
 
 type options struct {
@@ -64,6 +65,9 @@ func main() {
 	if controler == nil {
 		return
 	}
+
+	ethClient := &eth.Client{}
+	ethClient.Test()
 
 	select {}
 }
