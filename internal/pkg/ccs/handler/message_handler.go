@@ -44,7 +44,6 @@ func (handler *MessageHandler) OnAfterJoinConference(userId string, id peer.ID, 
 	}
 }
 
-
 func (handler *MessageHandler) OnAfterLeaveConference(participant *roster.Participant, userId string, id peer.ID, result ccs.CCSErrorCode) {
 	handler.localNode.SendMessage(id, handler.pbPack.CreateLeaveConferenceResponse(handler.conf.ConferenceId(), userId, int32(result)))
 
@@ -65,9 +64,15 @@ func (handler *MessageHandler) OnAfterEndConference(userId string, id peer.ID, r
 	}
 }
 
-func (handler *MessageHandler) OnAfterChat(id peer.ID, result ccs.CCSErrorCode) {
+func (handler *MessageHandler) OnAfterChat(to *roster.Participant, message* dvc_protocol.ChatMessage) {
+	if to == nil {
+		return
+	}
+
+	handler.localNode.SendMessage(to.Pid, handler.pbPack.CreateChatMessage(message))
+
 	if handler.Next != nil {
-		handler.Next.OnAfterChat(id, result)
+		handler.Next.OnAfterChat(to, message)
 	}
 }
 

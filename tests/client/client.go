@@ -4,8 +4,8 @@ import (
 	"github.com/gangwn/dvc/pkg/util"
 	"github.com/gangwn/dvc/pkg/net/basic"
 	"github.com/gangwn/dvc/internal/pkg/ccs/config"
-	"github.com/gangwn/dvc/pkg/protocol"
 	"github.com/satori/go.uuid"
+	"github.com/gangwn/dvc/pkg/protocol"
 )
 
 func main() {
@@ -24,14 +24,8 @@ func main() {
 
 	id, err := node.Connect("/ip4/127.0.0.1/tcp/8100/ipfs/QmVzDgD8kiU57EPSZBYV45bzHYEiRXhQMats1ENHMfELVR")
 
-	message := &dvc_protocol.DVCMessage{}
-	message.Type = dvc_protocol.DVCMessage_JoinConference
-	message.JoinConfMsg = &dvc_protocol.JoinConferenceRequest{}
-
-	message.JoinConfMsg.UserId = uuid.NewV4().String()
-	message.JoinConfMsg.ConferenceId = uuid.NewV4().String()
-	message.JoinConfMsg.Name = "client1"
-
+	pbPack := &protocol.ProtobufPack{}
+	message := pbPack.CreateJoinConferenceRequest(uuid.NewV4().String(), uuid.NewV4().String(),  "client1")
 	node.SendMessage(id, message)
 
 	select {}

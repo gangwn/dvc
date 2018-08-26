@@ -7,6 +7,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference"
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference/basic"
+	"github.com/gangwn/dvc/internal/pkg/ccs"
 )
 
 type Controler struct {
@@ -18,6 +19,12 @@ func NewControler(node net.Node) (*Controler) {
 	controler := &Controler{node, make(map[string]conference.Conference)}
 	controler.localNode.SetMessageHandler(controler.MessageHandler)
 	return controler;
+}
+
+func(controler *Controler) RemoveConference(conference conference.Conference) {
+	if _, ok := controler.conferences[conference.ConferenceId()]; ok {
+		delete(controler.conferences, conference.ConferenceId())
+	}
 }
 
 func (controler *Controler) MessageHandler(id peer.ID, message *dvc_protocol.DVCMessage) {
@@ -53,9 +60,11 @@ func (controler *Controler) handleLeaveConference(id peer.ID, message *dvc_proto
 
 func (controler *Controler) handleEndConference(id peer.ID, message *dvc_protocol.EndConferenceRequest) {
 	if conf, ok := controler.conferences[message.ConferenceId]; ok {
-		conf.EndConference(id, message)
+		result := conf.EndConference(id, message)
+		if result == ccs.CCSErrorCode_Success {
+			delete(controler.conferences, message.ConferenceId)
+		}
 	}
-	delete(controler.conferences, message.ConferenceId)
 }
 
 func (controler *Controler) handleChat(id peer.ID, message *dvc_protocol.ChatMessage) {

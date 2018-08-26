@@ -9,6 +9,18 @@ type ProtobufPack struct {
 
 }
 
+func (*ProtobufPack) CreateJoinConferenceRequest(confId string, userId string, name string) (*dvc_protocol.DVCMessage){
+	message := &dvc_protocol.DVCMessage{}
+	message.Type = dvc_protocol.DVCMessage_JoinConferenceRequest
+	message.JoinConfReq = &dvc_protocol.JoinConferenceRequest{}
+
+	message.JoinConfReq.UserId = userId
+	message.JoinConfReq.ConferenceId = confId
+	message.JoinConfReq.Name = name
+
+	return message
+}
+
 func (*ProtobufPack) CreateJoinConferenceResponse(confId string, userId string, result int32) (*dvc_protocol.DVCMessage){
 	message := &dvc_protocol.DVCMessage{}
 	message.Type = dvc_protocol.DVCMessage_JoinConferenceResponse
@@ -69,4 +81,10 @@ func (*ProtobufPack) CreateRosterMessage(confId string, participant *roster.Part
 	return message
 }
 
+func (*ProtobufPack) CreateChatMessage(chatMessage *dvc_protocol.ChatMessage) (*dvc_protocol.DVCMessage){
+	message := &dvc_protocol.DVCMessage{}
+	message.Type = dvc_protocol.DVCMessage_Chat
+	message.ChatMsg = chatMessage
 
+	return message
+}

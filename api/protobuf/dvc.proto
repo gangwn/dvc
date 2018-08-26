@@ -51,6 +51,10 @@ message EndConferenceResponse {
 	string conference_id = 3;
 }
 
+message EndConferenceIndication {
+	string conference_id = 1;
+}
+
 message ChatMessage {
 	string from_user_id = 1;
 	string to_user_id = 2;
@@ -69,9 +73,10 @@ message DVCMessage {
 		LeaveConferenceResponse = 3;
 		EndConferenceRequest = 4;
 		EndConferenceResponse = 5;
-		Chat = 6;
-		ChatAck = 7;
-		RosterMessage = 8;
+		EndConferenceIndication = 6;
+		Chat = 7;
+		ChatAck = 8;
+		RosterMessage = 9;
 	}
 
 	DVCMessageType type = 1;
@@ -81,7 +86,8 @@ message DVCMessage {
 	LeaveConferenceResponse leave_conf_rsp = 5;
 	EndConferenceRequest end_conf_req = 6;
 	EndConferenceResponse end_conf_rsp = 7;
-	ChatMessage chat_msg = 8;
-	ChatMessageAck chat_msg_ack = 9;
-	RosterMessage roster_msg = 10;
+	EndConferenceIndication end_conf_ind = 8;
+	ChatMessage chat_msg = 9;
+	ChatMessageAck chat_msg_ack = 10;
+	RosterMessage roster_msg = 11;
 }
