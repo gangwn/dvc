@@ -5,35 +5,59 @@ import (
 	"github.com/gangwn/dvc/pkg/protocol"
 	"github.com/libp2p/go-libp2p-peer"
 	"github.com/gangwn/dvc/pkg/net"
+	"github.com/gangwn/dvc/internal/pkg/ccs/handler"
+	"github.com/gangwn/dvc/internal/pkg/ccs"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 )
 
 type BasicConference struct {
 	confId string
 	roster *roster.Roster
-	localNode net.Node
+
+	handler handler.Handler
 }
 
-func NewBasicConference(confId string, localNode net.Node) (conf *BasicConference) {
-	return &BasicConference{confId, roster.NewRoster(), localNode}
+func NewBasicConference(confId string, localNode net.Node) (*BasicConference) {
+	pbPack := &protocol.ProtobufPack{}
+
+	conf := &BasicConference{confId, roster.NewRoster(),nil}
+
+	msgHandler := handler.NewMessageHandler(conf,localNode,pbPack)
+	conf.handler = msgHandler
+
+	return conf
+}
+
+func (conf *BasicConference)ConferenceId() (string) {
+	return conf.confId
+}
+
+func (conf *BasicConference) Roster() (*roster.Roster) {
+	return conf.roster
 }
 
 func (conf *BasicConference) JoinConference(id peer.ID, message *dvc_protocol.JoinConferenceRequest) {
 	participant := conf.roster.GetParticipant(message.UserId)
 	if participant != nil {
-		conf.sendJoinConferenceResponse(id, 0)
+		conf.handler.OnAfterJoinConference(message.UserId, id, ccs.CCSErrorCode_AlreadyInMeeting)
 		return
 	}
 
 	participant = roster.NewParticipant(id, message.UserId, message.Name)
 	conf.roster.AddParticipant(participant)
 
-	conf.sendJoinConferenceResponse(id, 0)
-
-	conf.NotifyParticipantJoin(participant)
+	conf.handler.OnAfterJoinConference(message.UserId, id, ccs.CCSErrorCode_Success)
 }
 
 func (conf *BasicConference) LeaveConference(id peer.ID, message *dvc_protocol.LeaveConferenceRequest) {
+	participant := conf.roster.GetParticipant(message.UserId)
+	if participant == nil {
+		conf.handler.OnAfterLeaveConference(nil, message.UserId, id, ccs.CCSErrorCode_NotInMeeting)
+		return
+	}
 
+	conf.roster.RemoveParticipant(participant)
+	conf.handler.OnAfterLeaveConference(participant, message.UserId, id, ccs.CCSErrorCode_Success)
 }
 
 func (conf *BasicConference) EndConference(id peer.ID, message *dvc_protocol.EndConferenceRequest) {
@@ -44,35 +68,3 @@ func (conf *BasicConference) Chat(id peer.ID, message *dvc_protocol.ChatMessage)
 
 }
 
-func (conf *BasicConference) sendJoinConferenceResponse(id peer.ID, result int32) {
-	message := &dvc_protocol.DVCMessage{}
-	message.Type = dvc_protocol.DVCMessage_JoinConferenceResponse
-	message.JoinConfRsp = &dvc_protocol.JoinConferenceResponse{}
-	message.JoinConfRsp.Result = result
-
-	conf.localNode.SendMessage(id, message)
-}
-
-
-func (conf *BasicConference) NotifyParticipantJoin( participant *roster.Participant) {
-	message := &dvc_protocol.DVCMessage{}
-	message.Type = dvc_protocol.DVCMessage_RosterMessage
-	message.RosterMsg = &dvc_protocol.RosterMessage{}
-
-	p := dvc_protocol.Participant{}
-	p.State = dvc_protocol.Participant_Joined
-	p.Name = participant.Name
-	p.UserId = participant.UserId
-
-	message.RosterMsg.Participants = make([]*dvc_protocol.Participant, 1)
-	message.RosterMsg.Participants = append(message.RosterMsg.Participants, &p)
-
-	conf.broadcast(message)
-}
-
-func (conf *BasicConference) broadcast(message* dvc_protocol.DVCMessage){
-	participants := conf.roster.Participants()
-	for userId := range participants {
-		conf.localNode.SendMessage(participants[userId].Pid, message)
-	}
-}

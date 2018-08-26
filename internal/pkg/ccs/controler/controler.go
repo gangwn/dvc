@@ -3,7 +3,7 @@ package controler
 import (
 	"github.com/gangwn/dvc/pkg/net"
 	"github.com/libp2p/go-libp2p-peer"
-	"github.com/gangwn/dvc/pkg/protocol"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"github.com/golang/glog"
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference"
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference/basic"

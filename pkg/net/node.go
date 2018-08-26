@@ -4,7 +4,7 @@ import (
 		"github.com/libp2p/go-libp2p-peer"
 	"github.com/libp2p/go-libp2p-host"
 
-	"github.com/gangwn/dvc/pkg/protocol"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 			)
 
 // MessageHandler processes the DVC message received from P2P network

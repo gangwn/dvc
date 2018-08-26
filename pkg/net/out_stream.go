@@ -6,7 +6,7 @@ import (
 	protobufCodec "github.com/multiformats/go-multicodec/protobuf"
 	"github.com/multiformats/go-multicodec"
 	"bufio"
-	"github.com/gangwn/dvc/pkg/protocol"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"errors"
 )
 

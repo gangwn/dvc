@@ -3,7 +3,7 @@
 cur_dir=$(cd `dirname $0` && pwd)
 root_dir=$cur_dir/..
 source_dir=$root_dir/api/protobuf
-output_dir=$root_dir/pkg/protocol
+output_dir=$root_dir/pkg/protocol/pb
 
 rm -rf $output_dir/*
 

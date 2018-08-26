@@ -14,7 +14,9 @@ import (
 
 		"github.com/gangwn/dvc/internal/pkg/ccs/controler"
 	"github.com/gangwn/dvc/pkg/net/basic"
-	"github.com/gangwn/dvc/pkg/eth"
+	"github.com/gangwn/dvc/pkg/eth/basic"
+	"math/big"
+		"strconv"
 )
 
 type options struct {
@@ -47,6 +49,7 @@ func main() {
 	}
 
 	glog.Infof("Listen address is %v", cfg.Net.LisAddrs)
+	glog.Infof("gethRPCPath is %v", cfg.Eth.GethRPCPath)
 
 	addr := util.NewMultiaddr(cfg.Net.LisAddrs)
 	_, priv, err := util.LoadKeyPair(cfg.Key.Dir)
@@ -66,8 +69,33 @@ func main() {
 		return
 	}
 
-	ethClient := &eth.Client{}
-	ethClient.Test()
+	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, ContractAddr: %s", cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, cfg.Eth.ContractAddr)
+	ethClient, err := basiceth.NewBasicClient(cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, cfg.Eth.ContractAddr)
+	if err != nil {
+		glog.Errorf("Create basic eth client fail: ", err)
+		return
+	}
+
+	gasLimit, err := strconv.ParseUint(cfg.Eth.GasLimit, 0, 64)
+	if err != nil {
+		glog.Errorf("Error parse gas limit: ", err)
+		return
+	}
+
+	var gasPrice *big.Int
+	if cfg.Eth.GasPrice > 0 {
+		gasPrice = big.NewInt(int64(cfg.Eth.GasPrice))
+	}
+
+	glog.Infof("Initialze ethClient, gasLimit: %v, gasPrice: %v", gasLimit, *gasPrice)
+
+	err = ethClient.Initialize(cfg.Eth.Password, gasLimit, gasPrice)
+	if err != nil {
+		glog.Errorf("Error initialize ethClient: ", err)
+		return
+	}
+
+	ethClient.ScheduleConference()
 
 	select {}
 }

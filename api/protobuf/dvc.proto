@@ -9,6 +9,8 @@ message JoinConferenceRequest {
 
 message JoinConferenceResponse {
 	int32 result = 1;
+	string user_id = 2;
+	string conference_id = 3;
 }
 
 message Participant {
@@ -23,7 +25,8 @@ message Participant {
 }
 
 message RosterMessage {
-	repeated Participant participants = 1;
+	string conference_id = 1;
+	repeated Participant participants = 2;
 }
 
 message LeaveConferenceRequest {
@@ -31,9 +34,21 @@ message LeaveConferenceRequest {
 	string conference_id = 2;
 }
 
+message LeaveConferenceResponse {
+	int32 result = 1;
+	string user_id = 2;
+	string conference_id = 3;
+}
+
 message EndConferenceRequest {
 	string user_id = 1;
 	string conference_id = 2;
+}
+
+message EndConferenceResponse {
+	int32 result = 1;
+	string user_id = 2;
+	string conference_id = 3;
 }
 
 message ChatMessage {
@@ -43,22 +58,30 @@ message ChatMessage {
 	string content = 4;
 }
 
+message ChatMessageAck {
+}
+
 message DVCMessage {
 	enum DVCMessageType {
 		JoinConferenceRequest = 0;
-		LeaveConferenceRequest = 1;
-		EndConferenceRequest = 2;
-		Chat = 3;
-		RosterMessage = 4;
-		JoinConferenceResponse = 100;
+		JoinConferenceResponse = 1;
+		LeaveConferenceRequest = 2;
+		LeaveConferenceResponse = 3;
+		EndConferenceRequest = 4;
+		EndConferenceResponse = 5;
+		Chat = 6;
+		ChatAck = 7;
+		RosterMessage = 8;
 	}
 
 	DVCMessageType type = 1;
 	JoinConferenceRequest join_conf_req = 2;
-	LeaveConferenceRequest leave_conf_req = 3;
-	EndConferenceRequest end_conf_req = 4;
-	ChatMessage chat_msg = 5;
-	RosterMessage roster_msg = 6;
-
-	JoinConferenceResponse join_conf_rsp = 100;
+	JoinConferenceResponse join_conf_rsp = 3;
+	LeaveConferenceRequest leave_conf_req = 4;
+	LeaveConferenceResponse leave_conf_rsp = 5;
+	EndConferenceRequest end_conf_req = 6;
+	EndConferenceResponse end_conf_rsp = 7;
+	ChatMessage chat_msg = 8;
+	ChatMessageAck chat_msg_ack = 9;
+	RosterMessage roster_msg = 10;
 }

@@ -1,12 +1,9 @@
 package eth
 
-// Generate contract code via below commands
-//go:generate abigen --sol  ../../api/contracts/WebexMeeting.sol --pkg contracts --out contracts/webex_meeting.go
+import "math/big"
 
-type Client struct {
+type Client interface {
+	Initialize(password string, gasLimit uint64, gasPrice *big.Int)
 
-}
-
-func (c *Client) Test() {
-
+	ScheduleConference()
 }

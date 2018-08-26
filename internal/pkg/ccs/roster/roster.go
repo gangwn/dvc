@@ -30,3 +30,7 @@ func (roster *Roster) AddParticipant(participant *Participant) bool {
 	return true;
 }
 
+func (roster *Roster) RemoveParticipant(participant *Participant) {
+	delete(roster.participants, participant.UserId)
+}
+

@@ -12,7 +12,7 @@ import (
 	inet "github.com/libp2p/go-libp2p-net"
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/golang/glog"
-	"github.com/gangwn/dvc/pkg/protocol"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"errors"
 		"fmt"
 	"github.com/libp2p/go-libp2p-peerstore"
