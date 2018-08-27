@@ -33,6 +33,16 @@ func (*ProtobufPack) CreateJoinConferenceResponse(confId string, userId string, 
 	return message
 }
 
+func (*ProtobufPack) CreateLeaveConferenceRequest(confId string, userId string) (*dvc_protocol.DVCMessage){
+	message := &dvc_protocol.DVCMessage{}
+	message.Type = dvc_protocol.DVCMessage_LeaveConferenceRequest
+	message.LeaveConfReq = &dvc_protocol.LeaveConferenceRequest{}
+
+	message.LeaveConfReq.UserId = userId
+	message.LeaveConfReq.ConferenceId = confId
+
+	return message
+}
 
 func (*ProtobufPack) CreateLeaveConferenceResponse(confId string, userId string, result int32) (*dvc_protocol.DVCMessage){
 	message := &dvc_protocol.DVCMessage{}
@@ -46,6 +56,16 @@ func (*ProtobufPack) CreateLeaveConferenceResponse(confId string, userId string,
 	return message
 }
 
+func (*ProtobufPack) CreateEndConferenceRequest(confId string, userId string) (*dvc_protocol.DVCMessage){
+	message := &dvc_protocol.DVCMessage{}
+	message.Type = dvc_protocol.DVCMessage_EndConferenceRequest
+	message.EndConfReq = &dvc_protocol.EndConferenceRequest{}
+
+	message.EndConfReq.UserId = userId
+	message.EndConfReq.ConferenceId = confId
+
+	return message
+}
 
 func (*ProtobufPack) CreateEndConferenceResponse(confId string, userId string, result int32) (*dvc_protocol.DVCMessage){
 	message := &dvc_protocol.DVCMessage{}
@@ -54,6 +74,16 @@ func (*ProtobufPack) CreateEndConferenceResponse(confId string, userId string, r
 
 	message.EndConfRsp.UserId = userId
 	message.EndConfRsp.Result = result
+	message.EndConfRsp.ConferenceId = confId
+
+	return message
+}
+
+func (*ProtobufPack) CreateEndConferenceIndication(confId string) (*dvc_protocol.DVCMessage){
+	message := &dvc_protocol.DVCMessage{}
+	message.Type = dvc_protocol.DVCMessage_EndConferenceIndication
+	message.EndConfInd = &dvc_protocol.EndConferenceIndication{}
+
 	message.EndConfRsp.ConferenceId = confId
 
 	return message

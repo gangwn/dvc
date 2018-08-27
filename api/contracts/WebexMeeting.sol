@@ -7,6 +7,8 @@ contract WebexMeeting {
   uint mDuration;
   uint256 mStartTime;
 
+  event MeetingStarted(string confId);
+
   function startMeeting() public returns (string) {
     return ("Start Meeting");
   }

@@ -35,7 +35,7 @@ func (handler *MessageHandler) OnAfterJoinConference(userId string, id peer.ID, 
 	if result == ccs.CCSErrorCode_Success {
 		participant := handler.conf.Roster().GetParticipant(userId)
 		if participant != nil {
-
+			handler.broadcast(handler.pbPack.CreateRosterMessage(handler.conf.ConferenceId(), participant, true))
 		}
 	}
 
@@ -58,6 +58,10 @@ func (handler *MessageHandler) OnAfterLeaveConference(participant *roster.Partic
 
 func (handler *MessageHandler) OnAfterEndConference(userId string, id peer.ID, result ccs.CCSErrorCode) {
 	handler.localNode.SendMessage(id, handler.pbPack.CreateEndConferenceResponse(handler.conf.ConferenceId(),userId, int32(result)))
+
+	if result == ccs.CCSErrorCode_Success {
+		handler.broadcast((handler.pbPack.CreateEndConferenceIndication(handler.conf.ConferenceId())))
+	}
 
 	if handler.Next != nil {
 		handler.Next.OnAfterEndConference(userId, id, result)

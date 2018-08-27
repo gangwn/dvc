@@ -1,9 +1,15 @@
 package eth
 
-import "math/big"
+import (
+	"math/big"
+	"github.com/ethereum/go-ethereum/ethclient"
+)
 
 type Client interface {
-	Initialize(password string, gasLimit uint64, gasPrice *big.Int)
+
+	EthClient() *ethclient.Client
+
+	SetUp(password string, gasLimit uint64, gasPrice *big.Int)
 
 	ScheduleConference()
 }

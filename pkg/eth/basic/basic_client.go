@@ -46,7 +46,12 @@ func NewBasicClient(account string, keystoreDir string, gethRPCPath string, cont
 }
 
 
-func (client *BasicClient) Initialize(password string, gasLimit uint64, gasPrice *big.Int) error {
+func (client *BasicClient) EthClient() *ethclient.Client{
+	return client.ethClient
+}
+
+
+func (client *BasicClient) SetUp(password string, gasLimit uint64, gasPrice *big.Int) error {
 	err := client.am.Unlock(password)
 	if err != nil {
 		return err

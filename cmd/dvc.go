@@ -89,7 +89,7 @@ func main() {
 
 	glog.Infof("Initialze ethClient, gasLimit: %v, gasPrice: %v", gasLimit, *gasPrice)
 
-	err = ethClient.Initialize(cfg.Eth.Password, gasLimit, gasPrice)
+	err = ethClient.SetUp(cfg.Eth.Password, gasLimit, gasPrice)
 	if err != nil {
 		glog.Errorf("Error initialize ethClient: ", err)
 		return
