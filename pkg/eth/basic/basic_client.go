@@ -1,7 +1,11 @@
 package basiceth
 
 // Generate contract code via below commands
-//go:generate abigen --sol  ../../../api/contracts/WebexMeeting.sol --pkg contracts --out ../contracts/webex_meeting.go
+//go:generate abigen --sol  ../../../api/contract/contracts/IService.sol --pkg contracts --out ../contracts/iservice.go
+//go:generate abigen --sol  ../../../api/contract/contracts/ConferenceService.sol --pkg contracts --out ../contracts/conference_service.go
+//go:generate abigen --sol  ../../../api/contract/contracts/UserService.sol --pkg contracts --out ../contracts/user_service.go
+//go:generate abigen --sol  ../../../api/contract/contracts/Utils.sol --pkg contracts --out ../contracts/utils.go
+
 
 import (
 	"github.com/ethereum/go-ethereum/ethclient"
