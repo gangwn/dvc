@@ -1,6 +1,7 @@
 package basiceth
 
 // Generate contract code via below commands
+//go:generate abigen --sol  ../../../api/contract/contracts/ServiceManager.sol --pkg contracts --out ../contracts/service_manager.go
 //go:generate abigen --sol  ../../../api/contract/contracts/IService.sol --pkg contracts --out ../contracts/iservice.go
 //go:generate abigen --sol  ../../../api/contract/contracts/ConferenceService.sol --pkg contracts --out ../contracts/conference_service.go
 //go:generate abigen --sol  ../../../api/contract/contracts/UserService.sol --pkg contracts --out ../contracts/user_service.go

@@ -12,7 +12,7 @@ contract UserService is IService {
 
     mapping(address => User) private users;
 
-    function getConferences(uint256 timeAfter) public view returns (string, address, string, uint256, uint, uint){
+    function getConferences(uint256 timeAfter) external view returns (string, address, string, uint256, uint, uint){
         User storage user = users[msg.sender];
 
         for (uint i = 0; i < user.conferences.length; i++) {
