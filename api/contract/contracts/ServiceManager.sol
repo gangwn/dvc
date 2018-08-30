@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import './openzeppelin-solidity/contracts/ownership/Ownable.sol';
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract ServiceManager is Ownable {
 
@@ -18,5 +18,4 @@ contract ServiceManager is Ownable {
     function getService(string serviceName) external view returns (address) {
         return services[serviceName].contractAddress;
     }
-
 }

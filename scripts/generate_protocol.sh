@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cur_dir=$(cd `dirname $0` && pwd)
-root_dir=$cur_dir/..
+root_dir=$(cd $cur_dir/.. && pwd)
 source_dir=$root_dir/api/protobuf
 output_dir=$root_dir/pkg/protocol/pb
 
