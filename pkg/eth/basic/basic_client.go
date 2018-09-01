@@ -15,10 +15,17 @@ import (
 
 type BasicClient struct {
 	ethClient *ethclient.Client
-	webexMeetingContractAddr common.Address
 
-	webexMeetingContract *contracts.WebexMeeting
-	webexMeetingSession *contracts.WebexMeetingSession
+	serviceManagerAddr common.Address
+
+	serviceManagerContract *contracts.ServiceManager
+	serviceManagerSession *contracts.ServiceManagerSession
+
+	ccsServiceContract *contracts.CCSService
+	ccsServiceSession *contracts.CCSServiceSession
+
+	conferenceServiceContract *contracts.ConferenceService
+	conferenceServiceSession *contracts.ConferenceServiceSession
 
 	am eth.AccountManager
 }
@@ -36,7 +43,7 @@ func NewBasicClient(account string, keystoreDir string, gethRPCPath string, cont
 
 	basicClient := &BasicClient{
 		ethClient:client,
-		webexMeetingContractAddr: common.HexToAddress(contactAddr),
+		serviceManagerAddr: common.HexToAddress(contactAddr),
 		am: am}
 
 	return basicClient, nil
@@ -54,26 +61,30 @@ func (client *BasicClient) SetUp(password string, gasLimit uint64, gasPrice *big
 		return err
 	}
 
-	webexMeetingContract, err := contracts.NewWebexMeeting(client.webexMeetingContractAddr, client.ethClient)
-	if err != nil {
-		return err
-	}
-	client.webexMeetingContract = webexMeetingContract
-
-	transactOpts, err := client.createTransactOpts(gasLimit, gasPrice)
+	err = client.setUpServiceManager(gasLimit, gasPrice)
 	if err != nil {
 		return err
 	}
 
-	client.webexMeetingSession = &contracts.WebexMeetingSession {
-		client.webexMeetingContract,
-		bind.CallOpts{
-			Pending: true,
-		},
-		*transactOpts,
+	client.setUpCCSService(gasLimit, gasPrice)
+	if err != nil {
+		return err
+	}
+
+	client.setUpConferenceService(gasLimit, gasPrice)
+	if err != nil {
+		return err
 	}
 
 	return nil
+}
+
+func (client *BasicClient) RegisterCCS(ip string, port *big.Int) error {
+	glog.Infof("RegisterCCS, ip: %v, port: %v", ip, port)
+
+	_, err := client.ccsServiceSession.RegisterCCS(ip, port)
+
+	return err
 }
 
 func (client *BasicClient) ScheduleConference() {
@@ -86,10 +97,95 @@ func (client *BasicClient) ScheduleConference() {
 	//
 	//key,err := client.webexMeetingSession.MMeetingKey()
 	//glog.Infof("key: %v, err:%s", key, err)
-	tx, err:= client.webexMeetingSession.StartMeeting()
-	glog.Infof("tx: %v, err:%s", tx, err)
+	//tx, err:= client.webexMeetingSession.StartMeeting()
+	//glog.Infof("tx: %v, err:%s", tx, err)
 }
 
+func (client *BasicClient) setUpServiceManager(gasLimit uint64, gasPrice *big.Int) error {
+	glog.Infof("setUpServiceManager, address: %v", client.serviceManagerAddr.Hex())
+
+
+	serviceManagerContract, err := contracts.NewServiceManager(client.serviceManagerAddr, client.ethClient)
+	if err != nil {
+		return err
+	}
+	client.serviceManagerContract = serviceManagerContract
+
+	transactOpts, err := client.createTransactOpts(gasLimit, gasPrice)
+	if err != nil {
+		return err
+	}
+
+	client.serviceManagerSession = &contracts.ServiceManagerSession{
+		client.serviceManagerContract,
+		bind.CallOpts{
+			Pending: true,
+		},
+		*transactOpts,
+	}
+
+	return nil
+}
+
+func (client *BasicClient) setUpCCSService(gasLimit uint64, gasPrice *big.Int) error {
+	ccsServiceAddr, err := client.serviceManagerSession.GetService("CCSService")
+	if(err != nil) {
+		return err
+	}
+
+	glog.Infof("setUpCCSService, address: %v", ccsServiceAddr.Hex())
+
+	ccsServiceContract, err := contracts.NewCCSService(ccsServiceAddr, client.ethClient)
+	if err != nil {
+		return err
+	}
+	client.ccsServiceContract = ccsServiceContract
+
+	transactOpts, err := client.createTransactOpts(gasLimit, gasPrice)
+	if err != nil {
+		return err
+	}
+
+	client.ccsServiceSession = &contracts.CCSServiceSession {
+		client.ccsServiceContract,
+		bind.CallOpts{
+			Pending: true,
+		},
+		*transactOpts,
+	}
+
+	return nil
+}
+
+func (client *BasicClient) setUpConferenceService(gasLimit uint64, gasPrice *big.Int) error {
+	conferenceServiceAddr, err := client.serviceManagerSession.GetService("ConferenceService")
+	if(err != nil) {
+		return err
+	}
+
+	glog.Infof("setUpConferenceService, address: %v", conferenceServiceAddr.Hex())
+
+	conferenceServiceContract, err := contracts.NewConferenceService(conferenceServiceAddr, client.ethClient)
+	if err != nil {
+		return err
+	}
+	client.conferenceServiceContract = conferenceServiceContract
+
+	transactOpts, err := client.createTransactOpts(gasLimit, gasPrice)
+	if err != nil {
+		return err
+	}
+
+	client.conferenceServiceSession = &contracts.ConferenceServiceSession {
+		client.conferenceServiceContract,
+		bind.CallOpts{
+			Pending: true,
+		},
+		*transactOpts,
+	}
+
+	return nil
+}
 
 func (client *BasicClient) createTransactOpts(gasLimit uint64, gasPrice *big.Int) (*bind.TransactOpts, error) {
 	return &bind.TransactOpts{

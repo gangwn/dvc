@@ -3,16 +3,20 @@ const DeployHelper = require('./deploy_helper.js');
 var ServiceManager = artifacts.require("./ServiceManager.sol");
 var Utils = artifacts.require("./Utils.sol");
 var ConferenceService = artifacts.require("./ConferenceService.sol");
-
+var CCSService = artifacts.require("./CCSService.sol");
 module.exports = function(deployer) {
-    deployer.logger.log("Start to deploy contracts")
+    deployer.then(async () => {
+        deployer.logger.log("Start to deploy contracts")
 
-    const deployHelper = new DeployHelper(deployer, ServiceManager)
+        const deployHelper = new DeployHelper(deployer, ServiceManager)
 
-    const serviceManager =  deployHelper.deployManager()
+        const serviceManager = await  deployHelper.deployManager()
 
-    deployer.deploy(Utils);
-    deployer.link(Utils, ConferenceService);
+        await deployer.deploy(Utils);
+        await deployer.link(Utils, ConferenceService);
 
-    deployHelper.deployContract(ConferenceService, "ConferenceService", serviceManager.address)
+        await deployHelper.deployContract(ConferenceService, "ConferenceService", serviceManager.address)
+
+        await deployHelper.deployContract(CCSService, "CCSService", serviceManager.address)
+    })
 };

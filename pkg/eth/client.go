@@ -11,5 +11,7 @@ type Client interface {
 
 	SetUp(password string, gasLimit uint64, gasPrice *big.Int)
 
+	RegisterCCS(ip string, port *big.Int)
+
 	ScheduleConference()
 }

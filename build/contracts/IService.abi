@@ -1,0 +1,1 @@
+[{"constant":true,"inputs":[],"name":"serviceManager","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"serviceManagerAddr","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]

@@ -1,0 +1,1 @@
+[{"constant":true,"inputs":[{"name":"str","type":"string"}],"name":"isNull","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"pure","type":"function"}]

@@ -95,7 +95,11 @@ func main() {
 		return
 	}
 
-	ethClient.ScheduleConference()
+	err = ethClient.RegisterCCS(cfg.Net.LisAddrs[0].IP, big.NewInt(int64(cfg.Net.LisAddrs[0].Port)))
+	if err != nil {
+		glog.Errorf("Error register CCS: ", err)
+		return
+	}
 
 	select {}
 }

@@ -14,107 +14,107 @@ import (
 	"github.com/ethereum/go-ethereum/event"
 )
 
-// ContractsABI is the input ABI used to generate the binding from.
-const ContractsABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"serviceName\",\"type\":\"string\"},{\"name\":\"contractAddress\",\"type\":\"address\"}],\"name\":\"registerService\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"serviceName\",\"type\":\"string\"}],\"name\":\"getService\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"}],\"name\":\"OwnershipRenounced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}]"
+// ServiceManagerABI is the input ABI used to generate the binding from.
+const ServiceManagerABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"serviceName\",\"type\":\"string\"},{\"name\":\"contractAddress\",\"type\":\"address\"}],\"name\":\"registerService\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"serviceName\",\"type\":\"string\"}],\"name\":\"getService\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"}],\"name\":\"OwnershipRenounced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}]"
 
-// Contracts is an auto generated Go binding around an Ethereum contract.
-type Contracts struct {
-	ContractsCaller     // Read-only binding to the contract
-	ContractsTransactor // Write-only binding to the contract
-	ContractsFilterer   // Log filterer for contract events
+// ServiceManager is an auto generated Go binding around an Ethereum contract.
+type ServiceManager struct {
+	ServiceManagerCaller     // Read-only binding to the contract
+	ServiceManagerTransactor // Write-only binding to the contract
+	ServiceManagerFilterer   // Log filterer for contract events
 }
 
-// ContractsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type ContractsCaller struct {
+// ServiceManagerCaller is an auto generated read-only Go binding around an Ethereum contract.
+type ServiceManagerCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type ContractsTransactor struct {
+// ServiceManagerTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type ServiceManagerTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type ContractsFilterer struct {
+// ServiceManagerFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type ServiceManagerFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsSession is an auto generated Go binding around an Ethereum contract,
+// ServiceManagerSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type ContractsSession struct {
-	Contract     *Contracts        // Generic contract binding to set the session for
+type ServiceManagerSession struct {
+	Contract     *ServiceManager   // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// ContractsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// ServiceManagerCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type ContractsCallerSession struct {
-	Contract *ContractsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts    // Call options to use throughout this session
+type ServiceManagerCallerSession struct {
+	Contract *ServiceManagerCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts         // Call options to use throughout this session
 }
 
-// ContractsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// ServiceManagerTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type ContractsTransactorSession struct {
-	Contract     *ContractsTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts    // Transaction auth options to use throughout this session
+type ServiceManagerTransactorSession struct {
+	Contract     *ServiceManagerTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts         // Transaction auth options to use throughout this session
 }
 
-// ContractsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type ContractsRaw struct {
-	Contract *Contracts // Generic contract binding to access the raw methods on
+// ServiceManagerRaw is an auto generated low-level Go binding around an Ethereum contract.
+type ServiceManagerRaw struct {
+	Contract *ServiceManager // Generic contract binding to access the raw methods on
 }
 
-// ContractsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type ContractsCallerRaw struct {
-	Contract *ContractsCaller // Generic read-only contract binding to access the raw methods on
+// ServiceManagerCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type ServiceManagerCallerRaw struct {
+	Contract *ServiceManagerCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// ContractsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type ContractsTransactorRaw struct {
-	Contract *ContractsTransactor // Generic write-only contract binding to access the raw methods on
+// ServiceManagerTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type ServiceManagerTransactorRaw struct {
+	Contract *ServiceManagerTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewContracts creates a new instance of Contracts, bound to a specific deployed contract.
-func NewContracts(address common.Address, backend bind.ContractBackend) (*Contracts, error) {
-	contract, err := bindContracts(address, backend, backend, backend)
+// NewServiceManager creates a new instance of ServiceManager, bound to a specific deployed contract.
+func NewServiceManager(address common.Address, backend bind.ContractBackend) (*ServiceManager, error) {
+	contract, err := bindServiceManager(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Contracts{ContractsCaller: ContractsCaller{contract: contract}, ContractsTransactor: ContractsTransactor{contract: contract}, ContractsFilterer: ContractsFilterer{contract: contract}}, nil
+	return &ServiceManager{ServiceManagerCaller: ServiceManagerCaller{contract: contract}, ServiceManagerTransactor: ServiceManagerTransactor{contract: contract}, ServiceManagerFilterer: ServiceManagerFilterer{contract: contract}}, nil
 }
 
-// NewContractsCaller creates a new read-only instance of Contracts, bound to a specific deployed contract.
-func NewContractsCaller(address common.Address, caller bind.ContractCaller) (*ContractsCaller, error) {
-	contract, err := bindContracts(address, caller, nil, nil)
+// NewServiceManagerCaller creates a new read-only instance of ServiceManager, bound to a specific deployed contract.
+func NewServiceManagerCaller(address common.Address, caller bind.ContractCaller) (*ServiceManagerCaller, error) {
+	contract, err := bindServiceManager(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsCaller{contract: contract}, nil
+	return &ServiceManagerCaller{contract: contract}, nil
 }
 
-// NewContractsTransactor creates a new write-only instance of Contracts, bound to a specific deployed contract.
-func NewContractsTransactor(address common.Address, transactor bind.ContractTransactor) (*ContractsTransactor, error) {
-	contract, err := bindContracts(address, nil, transactor, nil)
+// NewServiceManagerTransactor creates a new write-only instance of ServiceManager, bound to a specific deployed contract.
+func NewServiceManagerTransactor(address common.Address, transactor bind.ContractTransactor) (*ServiceManagerTransactor, error) {
+	contract, err := bindServiceManager(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsTransactor{contract: contract}, nil
+	return &ServiceManagerTransactor{contract: contract}, nil
 }
 
-// NewContractsFilterer creates a new log filterer instance of Contracts, bound to a specific deployed contract.
-func NewContractsFilterer(address common.Address, filterer bind.ContractFilterer) (*ContractsFilterer, error) {
-	contract, err := bindContracts(address, nil, nil, filterer)
+// NewServiceManagerFilterer creates a new log filterer instance of ServiceManager, bound to a specific deployed contract.
+func NewServiceManagerFilterer(address common.Address, filterer bind.ContractFilterer) (*ServiceManagerFilterer, error) {
+	contract, err := bindServiceManager(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsFilterer{contract: contract}, nil
+	return &ServiceManagerFilterer{contract: contract}, nil
 }
 
-// bindContracts binds a generic wrapper to an already deployed contract.
-func bindContracts(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(ContractsABI))
+// bindServiceManager binds a generic wrapper to an already deployed contract.
+func bindServiceManager(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(ServiceManagerABI))
 	if err != nil {
 		return nil, err
 	}
@@ -125,158 +125,158 @@ func bindContracts(address common.Address, caller bind.ContractCaller, transacto
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Contracts *ContractsRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
-	return _Contracts.Contract.ContractsCaller.contract.Call(opts, result, method, params...)
+func (_ServiceManager *ServiceManagerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ServiceManager.Contract.ServiceManagerCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Contracts *ContractsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.Contract.ContractsTransactor.contract.Transfer(opts)
+func (_ServiceManager *ServiceManagerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ServiceManager.Contract.ServiceManagerTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Contracts *ContractsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Contracts.Contract.ContractsTransactor.contract.Transact(opts, method, params...)
+func (_ServiceManager *ServiceManagerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ServiceManager.Contract.ServiceManagerTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Contracts *ContractsCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
-	return _Contracts.Contract.contract.Call(opts, result, method, params...)
+func (_ServiceManager *ServiceManagerCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ServiceManager.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Contracts *ContractsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.Contract.contract.Transfer(opts)
+func (_ServiceManager *ServiceManagerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ServiceManager.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Contracts *ContractsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Contracts.Contract.contract.Transact(opts, method, params...)
+func (_ServiceManager *ServiceManagerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ServiceManager.Contract.contract.Transact(opts, method, params...)
 }
 
 // GetService is a free data retrieval call binding the contract method 0x794758be.
 //
 // Solidity: function getService(serviceName string) constant returns(address)
-func (_Contracts *ContractsCaller) GetService(opts *bind.CallOpts, serviceName string) (common.Address, error) {
+func (_ServiceManager *ServiceManagerCaller) GetService(opts *bind.CallOpts, serviceName string) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
 	)
 	out := ret0
-	err := _Contracts.contract.Call(opts, out, "getService", serviceName)
+	err := _ServiceManager.contract.Call(opts, out, "getService", serviceName)
 	return *ret0, err
 }
 
 // GetService is a free data retrieval call binding the contract method 0x794758be.
 //
 // Solidity: function getService(serviceName string) constant returns(address)
-func (_Contracts *ContractsSession) GetService(serviceName string) (common.Address, error) {
-	return _Contracts.Contract.GetService(&_Contracts.CallOpts, serviceName)
+func (_ServiceManager *ServiceManagerSession) GetService(serviceName string) (common.Address, error) {
+	return _ServiceManager.Contract.GetService(&_ServiceManager.CallOpts, serviceName)
 }
 
 // GetService is a free data retrieval call binding the contract method 0x794758be.
 //
 // Solidity: function getService(serviceName string) constant returns(address)
-func (_Contracts *ContractsCallerSession) GetService(serviceName string) (common.Address, error) {
-	return _Contracts.Contract.GetService(&_Contracts.CallOpts, serviceName)
+func (_ServiceManager *ServiceManagerCallerSession) GetService(serviceName string) (common.Address, error) {
+	return _ServiceManager.Contract.GetService(&_ServiceManager.CallOpts, serviceName)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Contracts *ContractsCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+func (_ServiceManager *ServiceManagerCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
 	)
 	out := ret0
-	err := _Contracts.contract.Call(opts, out, "owner")
+	err := _ServiceManager.contract.Call(opts, out, "owner")
 	return *ret0, err
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Contracts *ContractsSession) Owner() (common.Address, error) {
-	return _Contracts.Contract.Owner(&_Contracts.CallOpts)
+func (_ServiceManager *ServiceManagerSession) Owner() (common.Address, error) {
+	return _ServiceManager.Contract.Owner(&_ServiceManager.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Contracts *ContractsCallerSession) Owner() (common.Address, error) {
-	return _Contracts.Contract.Owner(&_Contracts.CallOpts)
+func (_ServiceManager *ServiceManagerCallerSession) Owner() (common.Address, error) {
+	return _ServiceManager.Contract.Owner(&_ServiceManager.CallOpts)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x3573c000.
 //
 // Solidity: function registerService(serviceName string, contractAddress address) returns()
-func (_Contracts *ContractsTransactor) RegisterService(opts *bind.TransactOpts, serviceName string, contractAddress common.Address) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "registerService", serviceName, contractAddress)
+func (_ServiceManager *ServiceManagerTransactor) RegisterService(opts *bind.TransactOpts, serviceName string, contractAddress common.Address) (*types.Transaction, error) {
+	return _ServiceManager.contract.Transact(opts, "registerService", serviceName, contractAddress)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x3573c000.
 //
 // Solidity: function registerService(serviceName string, contractAddress address) returns()
-func (_Contracts *ContractsSession) RegisterService(serviceName string, contractAddress common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.RegisterService(&_Contracts.TransactOpts, serviceName, contractAddress)
+func (_ServiceManager *ServiceManagerSession) RegisterService(serviceName string, contractAddress common.Address) (*types.Transaction, error) {
+	return _ServiceManager.Contract.RegisterService(&_ServiceManager.TransactOpts, serviceName, contractAddress)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x3573c000.
 //
 // Solidity: function registerService(serviceName string, contractAddress address) returns()
-func (_Contracts *ContractsTransactorSession) RegisterService(serviceName string, contractAddress common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.RegisterService(&_Contracts.TransactOpts, serviceName, contractAddress)
+func (_ServiceManager *ServiceManagerTransactorSession) RegisterService(serviceName string, contractAddress common.Address) (*types.Transaction, error) {
+	return _ServiceManager.Contract.RegisterService(&_ServiceManager.TransactOpts, serviceName, contractAddress)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "renounceOwnership")
+func (_ServiceManager *ServiceManagerTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ServiceManager.contract.Transact(opts, "renounceOwnership")
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Contracts.Contract.RenounceOwnership(&_Contracts.TransactOpts)
+func (_ServiceManager *ServiceManagerSession) RenounceOwnership() (*types.Transaction, error) {
+	return _ServiceManager.Contract.RenounceOwnership(&_ServiceManager.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsTransactorSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Contracts.Contract.RenounceOwnership(&_Contracts.TransactOpts)
+func (_ServiceManager *ServiceManagerTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _ServiceManager.Contract.RenounceOwnership(&_ServiceManager.TransactOpts)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(_newOwner address) returns()
-func (_Contracts *ContractsTransactor) TransferOwnership(opts *bind.TransactOpts, _newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "transferOwnership", _newOwner)
+func (_ServiceManager *ServiceManagerTransactor) TransferOwnership(opts *bind.TransactOpts, _newOwner common.Address) (*types.Transaction, error) {
+	return _ServiceManager.contract.Transact(opts, "transferOwnership", _newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(_newOwner address) returns()
-func (_Contracts *ContractsSession) TransferOwnership(_newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.TransferOwnership(&_Contracts.TransactOpts, _newOwner)
+func (_ServiceManager *ServiceManagerSession) TransferOwnership(_newOwner common.Address) (*types.Transaction, error) {
+	return _ServiceManager.Contract.TransferOwnership(&_ServiceManager.TransactOpts, _newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(_newOwner address) returns()
-func (_Contracts *ContractsTransactorSession) TransferOwnership(_newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.TransferOwnership(&_Contracts.TransactOpts, _newOwner)
+func (_ServiceManager *ServiceManagerTransactorSession) TransferOwnership(_newOwner common.Address) (*types.Transaction, error) {
+	return _ServiceManager.Contract.TransferOwnership(&_ServiceManager.TransactOpts, _newOwner)
 }
 
-// ContractsOwnershipRenouncedIterator is returned from FilterOwnershipRenounced and is used to iterate over the raw logs and unpacked data for OwnershipRenounced events raised by the Contracts contract.
-type ContractsOwnershipRenouncedIterator struct {
-	Event *ContractsOwnershipRenounced // Event containing the contract specifics and raw log
+// ServiceManagerOwnershipRenouncedIterator is returned from FilterOwnershipRenounced and is used to iterate over the raw logs and unpacked data for OwnershipRenounced events raised by the ServiceManager contract.
+type ServiceManagerOwnershipRenouncedIterator struct {
+	Event *ServiceManagerOwnershipRenounced // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -290,7 +290,7 @@ type ContractsOwnershipRenouncedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsOwnershipRenouncedIterator) Next() bool {
+func (it *ServiceManagerOwnershipRenouncedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -299,7 +299,7 @@ func (it *ContractsOwnershipRenouncedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsOwnershipRenounced)
+			it.Event = new(ServiceManagerOwnershipRenounced)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -314,7 +314,7 @@ func (it *ContractsOwnershipRenouncedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsOwnershipRenounced)
+		it.Event = new(ServiceManagerOwnershipRenounced)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -330,19 +330,19 @@ func (it *ContractsOwnershipRenouncedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsOwnershipRenouncedIterator) Error() error {
+func (it *ServiceManagerOwnershipRenouncedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsOwnershipRenouncedIterator) Close() error {
+func (it *ServiceManagerOwnershipRenouncedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsOwnershipRenounced represents a OwnershipRenounced event raised by the Contracts contract.
-type ContractsOwnershipRenounced struct {
+// ServiceManagerOwnershipRenounced represents a OwnershipRenounced event raised by the ServiceManager contract.
+type ServiceManagerOwnershipRenounced struct {
 	PreviousOwner common.Address
 	Raw           types.Log // Blockchain specific contextual infos
 }
@@ -350,31 +350,31 @@ type ContractsOwnershipRenounced struct {
 // FilterOwnershipRenounced is a free log retrieval operation binding the contract event 0xf8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c64820.
 //
 // Solidity: e OwnershipRenounced(previousOwner indexed address)
-func (_Contracts *ContractsFilterer) FilterOwnershipRenounced(opts *bind.FilterOpts, previousOwner []common.Address) (*ContractsOwnershipRenouncedIterator, error) {
+func (_ServiceManager *ServiceManagerFilterer) FilterOwnershipRenounced(opts *bind.FilterOpts, previousOwner []common.Address) (*ServiceManagerOwnershipRenouncedIterator, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
 		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "OwnershipRenounced", previousOwnerRule)
+	logs, sub, err := _ServiceManager.contract.FilterLogs(opts, "OwnershipRenounced", previousOwnerRule)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsOwnershipRenouncedIterator{contract: _Contracts.contract, event: "OwnershipRenounced", logs: logs, sub: sub}, nil
+	return &ServiceManagerOwnershipRenouncedIterator{contract: _ServiceManager.contract, event: "OwnershipRenounced", logs: logs, sub: sub}, nil
 }
 
 // WatchOwnershipRenounced is a free log subscription operation binding the contract event 0xf8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c64820.
 //
 // Solidity: e OwnershipRenounced(previousOwner indexed address)
-func (_Contracts *ContractsFilterer) WatchOwnershipRenounced(opts *bind.WatchOpts, sink chan<- *ContractsOwnershipRenounced, previousOwner []common.Address) (event.Subscription, error) {
+func (_ServiceManager *ServiceManagerFilterer) WatchOwnershipRenounced(opts *bind.WatchOpts, sink chan<- *ServiceManagerOwnershipRenounced, previousOwner []common.Address) (event.Subscription, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
 		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "OwnershipRenounced", previousOwnerRule)
+	logs, sub, err := _ServiceManager.contract.WatchLogs(opts, "OwnershipRenounced", previousOwnerRule)
 	if err != nil {
 		return nil, err
 	}
@@ -384,8 +384,8 @@ func (_Contracts *ContractsFilterer) WatchOwnershipRenounced(opts *bind.WatchOpt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsOwnershipRenounced)
-				if err := _Contracts.contract.UnpackLog(event, "OwnershipRenounced", log); err != nil {
+				event := new(ServiceManagerOwnershipRenounced)
+				if err := _ServiceManager.contract.UnpackLog(event, "OwnershipRenounced", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -406,9 +406,9 @@ func (_Contracts *ContractsFilterer) WatchOwnershipRenounced(opts *bind.WatchOpt
 	}), nil
 }
 
-// ContractsOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the Contracts contract.
-type ContractsOwnershipTransferredIterator struct {
-	Event *ContractsOwnershipTransferred // Event containing the contract specifics and raw log
+// ServiceManagerOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the ServiceManager contract.
+type ServiceManagerOwnershipTransferredIterator struct {
+	Event *ServiceManagerOwnershipTransferred // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -422,7 +422,7 @@ type ContractsOwnershipTransferredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsOwnershipTransferredIterator) Next() bool {
+func (it *ServiceManagerOwnershipTransferredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -431,7 +431,7 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsOwnershipTransferred)
+			it.Event = new(ServiceManagerOwnershipTransferred)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -446,7 +446,7 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsOwnershipTransferred)
+		it.Event = new(ServiceManagerOwnershipTransferred)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -462,19 +462,19 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsOwnershipTransferredIterator) Error() error {
+func (it *ServiceManagerOwnershipTransferredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsOwnershipTransferredIterator) Close() error {
+func (it *ServiceManagerOwnershipTransferredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsOwnershipTransferred represents a OwnershipTransferred event raised by the Contracts contract.
-type ContractsOwnershipTransferred struct {
+// ServiceManagerOwnershipTransferred represents a OwnershipTransferred event raised by the ServiceManager contract.
+type ServiceManagerOwnershipTransferred struct {
 	PreviousOwner common.Address
 	NewOwner      common.Address
 	Raw           types.Log // Blockchain specific contextual infos
@@ -483,7 +483,7 @@ type ContractsOwnershipTransferred struct {
 // FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: e OwnershipTransferred(previousOwner indexed address, newOwner indexed address)
-func (_Contracts *ContractsFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*ContractsOwnershipTransferredIterator, error) {
+func (_ServiceManager *ServiceManagerFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*ServiceManagerOwnershipTransferredIterator, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -494,17 +494,17 @@ func (_Contracts *ContractsFilterer) FilterOwnershipTransferred(opts *bind.Filte
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _ServiceManager.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsOwnershipTransferredIterator{contract: _Contracts.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+	return &ServiceManagerOwnershipTransferredIterator{contract: _ServiceManager.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
 }
 
 // WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: e OwnershipTransferred(previousOwner indexed address, newOwner indexed address)
-func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *ContractsOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+func (_ServiceManager *ServiceManagerFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *ServiceManagerOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -515,7 +515,7 @@ func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _ServiceManager.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
@@ -525,8 +525,8 @@ func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsOwnershipTransferred)
-				if err := _Contracts.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+				event := new(ServiceManagerOwnershipTransferred)
+				if err := _ServiceManager.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 					return err
 				}
 				event.Raw = log
