@@ -2,10 +2,13 @@ package eth
 
 import (
 	"github.com/ethereum/go-ethereum/common"
-		)
+	"github.com/ethereum/go-ethereum/core/types"
+)
+
+type EventCallback func(types.Log)
 
 type EventListener interface {
-	EventId(abiContent string, eventName string) (common.Hash, error)
-	Subscribe(eventName string, contactAddr common.Address, eventId common.Hash, retry bool)
-	Listen()
+	SetEventInfo(abiContent string, eventName string) (error)
+	Subscribe(contactAddr common.Address, cb EventCallback) (error)
+	Unsubscribe()
 }

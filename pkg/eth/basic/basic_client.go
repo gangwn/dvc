@@ -17,13 +17,14 @@ type BasicClient struct {
 	ethClient *ethclient.Client
 
 	serviceManagerAddr common.Address
-
 	serviceManagerContract *contracts.ServiceManager
 	serviceManagerSession *contracts.ServiceManagerSession
 
+	ccsServiceAddr common.Address
 	ccsServiceContract *contracts.CCSService
 	ccsServiceSession *contracts.CCSServiceSession
 
+	conferenceServiceAddr common.Address
 	conferenceServiceContract *contracts.ConferenceService
 	conferenceServiceSession *contracts.ConferenceServiceSession
 
@@ -79,6 +80,14 @@ func (client *BasicClient) SetUp(password string, gasLimit uint64, gasPrice *big
 	return nil
 }
 
+func (client *BasicClient) ConferenceServiceContractAddress() common.Address {
+	return client.conferenceServiceAddr
+}
+
+func (client *BasicClient) CCSServiceContractAddress() common.Address {
+	return client.ccsServiceAddr
+}
+
 func (client *BasicClient) RegisterCCS(ip string, port *big.Int) error {
 	glog.Infof("RegisterCCS, ip: %v, port: %v", ip, port)
 
@@ -87,18 +96,13 @@ func (client *BasicClient) RegisterCCS(ip string, port *big.Int) error {
 	return err
 }
 
-func (client *BasicClient) ScheduleConference() {
-	glog.Infof("ethClient.ScheduleConference")
+func (client *BasicClient) ScheduleConference(confId string, topic string, startTime *big.Int, duration *big.Int,
+	invitees []common.Address) error {
 
-	//_, err := client.webexMeetingSession.ScheduleMeeting("top",  big.NewInt(11),  big.NewInt(111))
-	//if err != nil {
-	//	glog.Infof("ScheduleMeeting error: %v", err)
-	//}
-	//
-	//key,err := client.webexMeetingSession.MMeetingKey()
-	//glog.Infof("key: %v, err:%s", key, err)
-	//tx, err:= client.webexMeetingSession.StartMeeting()
-	//glog.Infof("tx: %v, err:%s", tx, err)
+	glog.Infof("ScheduleConference, confId: %v, topic: %v, startTime: %v, duration: %v", confId, topic, *startTime, *duration )
+
+	_, err := client.conferenceServiceSession.ScheduleConference(confId, topic, startTime, duration, invitees)
+	return err
 }
 
 func (client *BasicClient) setUpServiceManager(gasLimit uint64, gasPrice *big.Int) error {
@@ -133,6 +137,8 @@ func (client *BasicClient) setUpCCSService(gasLimit uint64, gasPrice *big.Int) e
 		return err
 	}
 
+	client.ccsServiceAddr = ccsServiceAddr
+
 	glog.Infof("setUpCCSService, address: %v", ccsServiceAddr.Hex())
 
 	ccsServiceContract, err := contracts.NewCCSService(ccsServiceAddr, client.ethClient)
@@ -163,6 +169,8 @@ func (client *BasicClient) setUpConferenceService(gasLimit uint64, gasPrice *big
 		return err
 	}
 
+	client.conferenceServiceAddr = conferenceServiceAddr
+	
 	glog.Infof("setUpConferenceService, address: %v", conferenceServiceAddr.Hex())
 
 	conferenceServiceContract, err := contracts.NewConferenceService(conferenceServiceAddr, client.ethClient)

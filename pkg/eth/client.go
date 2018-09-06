@@ -3,15 +3,20 @@ package eth
 import (
 	"math/big"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 type Client interface {
 
 	EthClient() *ethclient.Client
 
-	SetUp(password string, gasLimit uint64, gasPrice *big.Int)
+	SetUp(password string, gasLimit uint64, gasPrice *big.Int) error
 
-	RegisterCCS(ip string, port *big.Int)
+	ConferenceServiceContractAddress() common.Address
 
-	ScheduleConference()
+	CCSServiceContractAddress() common.Address
+
+	RegisterCCS(ip string, port *big.Int) error
+
+	ScheduleConference(confId string, topic string, startTime *big.Int, duration *big.Int, invitees []common.Address) error
 }
