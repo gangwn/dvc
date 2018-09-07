@@ -22,9 +22,9 @@ contract ConferenceService is IService {
     mapping(address => User) private users;
 
     function scheduleConference(string confId, string topic, uint256 startTime, uint duration, address[] invitees) external {
-        require (!Utils.isNull(topic), "meeting topic is null");
-        require (duration > 0, "meeting duration must > 0");
-        require (startTime > 0, "meeting start time must > 0");
+        //require (!Utils.isNull(topic), "meeting topic is null");
+        //require (duration > 0, "meeting duration must > 0");
+        //require (startTime > 0, "meeting start time must > 0");
 
         Conference storage conf = conferences[confId];
         conf.confId = confId;
@@ -34,7 +34,7 @@ contract ConferenceService is IService {
         conf.duration = duration;
         conf.invitees = invitees;
 
-        insertConferenceToUser(conf);
+        //insertConferenceToUser(conf);
 
         emit ConferenceScheduled(msg.sender, confId, topic, startTime, duration, invitees);
     }

@@ -16,7 +16,7 @@ import (
 )
 
 // ConferenceServiceABI is the input ABI used to generate the binding from.
-const ConferenceServiceABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"timeAfter\",\"type\":\"uint256\"}],\"name\":\"getConferences\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"ttt\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"startTime\",\"type\":\"uint256\"},{\"name\":\"duration\",\"type\":\"uint256\"},{\"name\":\"invitees\",\"type\":\"address[]\"}],\"name\":\"scheduleConference\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"creatorAddr\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"topic\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"startTime\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"duration\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"invitees\",\"type\":\"address[]\"}],\"name\":\"ConferenceScheduled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"Test\",\"type\":\"event\"}]"
+const ConferenceServiceABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"timeAfter\",\"type\":\"uint256\"}],\"name\":\"getConferences\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"startTime\",\"type\":\"uint256\"},{\"name\":\"duration\",\"type\":\"uint256\"},{\"name\":\"invitees\",\"type\":\"address[]\"}],\"name\":\"scheduleConference\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"creatorAddr\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"topic\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"startTime\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"duration\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"invitees\",\"type\":\"address[]\"}],\"name\":\"ConferenceScheduled\",\"type\":\"event\"}]"
 
 // ConferenceService is an auto generated Go binding around an Ethereum contract.
 type ConferenceService struct {
@@ -224,32 +224,6 @@ func (_ConferenceService *ConferenceServiceCallerSession) ServiceManager() (comm
 	return _ConferenceService.Contract.ServiceManager(&_ConferenceService.CallOpts)
 }
 
-// Ttt is a free data retrieval call binding the contract method 0x88581c9a.
-//
-// Solidity: function ttt(confId string) constant returns(string)
-func (_ConferenceService *ConferenceServiceCaller) Ttt(opts *bind.CallOpts, confId string) (string, error) {
-	var (
-		ret0 = new(string)
-	)
-	out := ret0
-	err := _ConferenceService.contract.Call(opts, out, "ttt", confId)
-	return *ret0, err
-}
-
-// Ttt is a free data retrieval call binding the contract method 0x88581c9a.
-//
-// Solidity: function ttt(confId string) constant returns(string)
-func (_ConferenceService *ConferenceServiceSession) Ttt(confId string) (string, error) {
-	return _ConferenceService.Contract.Ttt(&_ConferenceService.CallOpts, confId)
-}
-
-// Ttt is a free data retrieval call binding the contract method 0x88581c9a.
-//
-// Solidity: function ttt(confId string) constant returns(string)
-func (_ConferenceService *ConferenceServiceCallerSession) Ttt(confId string) (string, error) {
-	return _ConferenceService.Contract.Ttt(&_ConferenceService.CallOpts, confId)
-}
-
 // ScheduleConference is a paid mutator transaction binding the contract method 0xec35ea15.
 //
 // Solidity: function scheduleConference(confId string, topic string, startTime uint256, duration uint256, invitees address[]) returns()
@@ -378,128 +352,6 @@ func (_ConferenceService *ConferenceServiceFilterer) WatchConferenceScheduled(op
 				// New log arrived, parse the event and forward to the user
 				event := new(ConferenceServiceConferenceScheduled)
 				if err := _ConferenceService.contract.UnpackLog(event, "ConferenceScheduled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ConferenceServiceTestIterator is returned from FilterTest and is used to iterate over the raw logs and unpacked data for Test events raised by the ConferenceService contract.
-type ConferenceServiceTestIterator struct {
-	Event *ConferenceServiceTest // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *ConferenceServiceTestIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(ConferenceServiceTest)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(ConferenceServiceTest)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *ConferenceServiceTestIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *ConferenceServiceTestIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// ConferenceServiceTest represents a Test event raised by the ConferenceService contract.
-type ConferenceServiceTest struct {
-	ConfId string
-	Raw    types.Log // Blockchain specific contextual infos
-}
-
-// FilterTest is a free log retrieval operation binding the contract event 0x00cb39d6c2c520f0597db0021367767c48fef2964cf402d3c9e9d4df12e43964.
-//
-// Solidity: e Test(confId string)
-func (_ConferenceService *ConferenceServiceFilterer) FilterTest(opts *bind.FilterOpts) (*ConferenceServiceTestIterator, error) {
-
-	logs, sub, err := _ConferenceService.contract.FilterLogs(opts, "Test")
-	if err != nil {
-		return nil, err
-	}
-	return &ConferenceServiceTestIterator{contract: _ConferenceService.contract, event: "Test", logs: logs, sub: sub}, nil
-}
-
-// WatchTest is a free log subscription operation binding the contract event 0x00cb39d6c2c520f0597db0021367767c48fef2964cf402d3c9e9d4df12e43964.
-//
-// Solidity: e Test(confId string)
-func (_ConferenceService *ConferenceServiceFilterer) WatchTest(opts *bind.WatchOpts, sink chan<- *ConferenceServiceTest) (event.Subscription, error) {
-
-	logs, sub, err := _ConferenceService.contract.WatchLogs(opts, "Test")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(ConferenceServiceTest)
-				if err := _ConferenceService.contract.UnpackLog(event, "Test", log); err != nil {
 					return err
 				}
 				event.Raw = log

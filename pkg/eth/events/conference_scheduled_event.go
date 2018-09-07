@@ -8,12 +8,23 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"strings"
-	)
+	"github.com/ethereum/go-ethereum/common"
+	"math/big"
+)
 
 type ConferenceScheduledEvent struct {
 	eventListener eth.EventListener
 	ethClient eth.Client
-	eventData *contracts.ConferenceServiceConferenceScheduled
+	eventData *ConferenceScheduledEventData
+}
+
+type ConferenceScheduledEventData struct {
+	CreatorAddr common.Address
+	ConfId      string
+	Topic       string
+	StartTime   *big.Int
+	Duration    *big.Int
+	Invitees    []common.Address
 }
 
 func NewConferenceScheduledEvent(ethClient eth.Client) *ConferenceScheduledEvent {
@@ -30,15 +41,20 @@ func NewConferenceScheduledEvent(ethClient eth.Client) *ConferenceScheduledEvent
 	return cse
 }
 
+
+
 func (cse *ConferenceScheduledEvent) Listen() error {
 	err := cse.eventListener.Subscribe(cse.ethClient.ConferenceServiceContractAddress(), func(log types.Log){
 		abiJSON, _ := abi.JSON(strings.NewReader(contracts.ConferenceServiceABI))
-		err := abiJSON.Unpack(&cse.eventData, "ConferenceScheduled", log.Data)
+
+		err := abiJSON.Unpack(cse.eventData, "ConferenceScheduled", log.Data)
 		if err != nil {
-			glog.Errorf("Failed to unpack ConferenceScheduled event data: %v, error: %v", log, err)
+			glog.Errorf("Failed to unpack ConferenceScheduled event data, error: %v", err)
 		}
 
-		glog.Info("Unpack ConferenceScheduled event data: %v", *cse.eventData)
+		glog.Infof("Unpack ConferenceScheduled event data, CreatorAddr: %v, ConfId: %v, Topic: %v, " +
+			"StartTime: %v, Duration: %v, Invitees: %v", cse.eventData.CreatorAddr.Hex(), cse.eventData.ConfId,  cse.eventData.Topic,
+			*cse.eventData.StartTime, *cse.eventData.Duration, cse.eventData.Invitees)
 	})
 
 	return err
