@@ -96,6 +96,35 @@ func (client *BasicClient) RegisterCCS(ip string, port *big.Int) error {
 	return err
 }
 
+func (client *BasicClient) ListAllCCS() (error, []eth.CCS) {
+	glog.Infof("listAllCCS")
+	addr, ip, port, err := client.ccsServiceSession.GetFirstCCS()
+	if err != nil {
+		return err, nil
+	}
+
+	var ccss []eth.CCS
+	ccs := eth.CCS{addr, ip, port}
+	ccss = append(ccss, ccs)
+
+	nextAddr, ip, port, err := client.ccsServiceSession.GetNextCCS(addr)
+	for (err == nil && nextAddr != addr && nextAddr != common.Address{0}) {
+		ccs := eth.CCS{nextAddr, ip, port}
+		ccss = append(ccss, ccs)
+
+		nextAddr, ip, port, err = client.ccsServiceSession.GetNextCCS(nextAddr)
+	}
+
+	return err, ccss
+}
+
+func (client *BasicClient) NewJob(confId string, ccsAddr common.Address) error {
+	glog.Infof("NewJob, confId: %v, ccsAddr: %v", confId, ccsAddr)
+
+	_, err := client.ccsServiceSession.NewJob(confId, ccsAddr)
+	return err
+}
+
 func (client *BasicClient) ScheduleConference(confId string, topic string, startTime *big.Int, duration *big.Int,
 	invitees []common.Address) error {
 

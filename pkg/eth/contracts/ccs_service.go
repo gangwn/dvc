@@ -16,7 +16,7 @@ import (
 )
 
 // CCSServiceABI is the input ABI used to generate the binding from.
-const CCSServiceABI = "[{\"constant\":true,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"getCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"ccsAddress\",\"type\":\"address\"}],\"name\":\"newJob\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"port\",\"type\":\"int256\"}],\"name\":\"registerCCS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"ccsAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"ip\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"port\",\"type\":\"int256\"}],\"name\":\"NewJobCreated\",\"type\":\"event\"}]"
+const CCSServiceABI = "[{\"constant\":true,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"getCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFirstCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getNextCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"ccsAddress\",\"type\":\"address\"}],\"name\":\"newJob\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"port\",\"type\":\"int256\"}],\"name\":\"registerCCS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"ccsAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"ip\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"port\",\"type\":\"int256\"}],\"name\":\"NewJobCreated\",\"type\":\"event\"}]"
 
 // CCSService is an auto generated Go binding around an Ethereum contract.
 type CCSService struct {
@@ -190,6 +190,70 @@ func (_CCSService *CCSServiceSession) GetCCS(confId string) (common.Address, str
 // Solidity: function getCCS(confId string) constant returns(address, string, int256)
 func (_CCSService *CCSServiceCallerSession) GetCCS(confId string) (common.Address, string, *big.Int, error) {
 	return _CCSService.Contract.GetCCS(&_CCSService.CallOpts, confId)
+}
+
+// GetFirstCCS is a free data retrieval call binding the contract method 0x49191de6.
+//
+// Solidity: function getFirstCCS() constant returns(address, string, int256)
+func (_CCSService *CCSServiceCaller) GetFirstCCS(opts *bind.CallOpts) (common.Address, string, *big.Int, error) {
+	var (
+		ret0 = new(common.Address)
+		ret1 = new(string)
+		ret2 = new(*big.Int)
+	)
+	out := &[]interface{}{
+		ret0,
+		ret1,
+		ret2,
+	}
+	err := _CCSService.contract.Call(opts, out, "getFirstCCS")
+	return *ret0, *ret1, *ret2, err
+}
+
+// GetFirstCCS is a free data retrieval call binding the contract method 0x49191de6.
+//
+// Solidity: function getFirstCCS() constant returns(address, string, int256)
+func (_CCSService *CCSServiceSession) GetFirstCCS() (common.Address, string, *big.Int, error) {
+	return _CCSService.Contract.GetFirstCCS(&_CCSService.CallOpts)
+}
+
+// GetFirstCCS is a free data retrieval call binding the contract method 0x49191de6.
+//
+// Solidity: function getFirstCCS() constant returns(address, string, int256)
+func (_CCSService *CCSServiceCallerSession) GetFirstCCS() (common.Address, string, *big.Int, error) {
+	return _CCSService.Contract.GetFirstCCS(&_CCSService.CallOpts)
+}
+
+// GetNextCCS is a free data retrieval call binding the contract method 0xafff130c.
+//
+// Solidity: function getNextCCS(addr address) constant returns(address, string, int256)
+func (_CCSService *CCSServiceCaller) GetNextCCS(opts *bind.CallOpts, addr common.Address) (common.Address, string, *big.Int, error) {
+	var (
+		ret0 = new(common.Address)
+		ret1 = new(string)
+		ret2 = new(*big.Int)
+	)
+	out := &[]interface{}{
+		ret0,
+		ret1,
+		ret2,
+	}
+	err := _CCSService.contract.Call(opts, out, "getNextCCS", addr)
+	return *ret0, *ret1, *ret2, err
+}
+
+// GetNextCCS is a free data retrieval call binding the contract method 0xafff130c.
+//
+// Solidity: function getNextCCS(addr address) constant returns(address, string, int256)
+func (_CCSService *CCSServiceSession) GetNextCCS(addr common.Address) (common.Address, string, *big.Int, error) {
+	return _CCSService.Contract.GetNextCCS(&_CCSService.CallOpts, addr)
+}
+
+// GetNextCCS is a free data retrieval call binding the contract method 0xafff130c.
+//
+// Solidity: function getNextCCS(addr address) constant returns(address, string, int256)
+func (_CCSService *CCSServiceCallerSession) GetNextCCS(addr common.Address) (common.Address, string, *big.Int, error) {
+	return _CCSService.Contract.GetNextCCS(&_CCSService.CallOpts, addr)
 }
 
 // ServiceManager is a free data retrieval call binding the contract method 0x3998fdd3.

@@ -11,7 +11,7 @@ dest_dir=$root_dir/pkg/eth/contracts
 
 solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity $source_dir/ServiceManager.sol -o $root_dir/build/contracts
 solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity $source_dir/ConferenceService.sol -o $root_dir/build/contracts
-solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity $source_dir/CCSService.sol -o $root_dir/build/contracts
+solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity LibCLL=$contract_root_dir/node_modules/LibCLL $source_dir/CCSService.sol -o $root_dir/build/contracts
 solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity $source_dir/IService.sol -o $root_dir/build/contracts
 solc --overwrite --abi openzeppelin-solidity=$contract_root_dir/node_modules/openzeppelin-solidity $source_dir/Utils.sol -o $root_dir/build/contracts
 

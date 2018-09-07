@@ -6,6 +6,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
+type CCS struct {
+	Addr common.Address
+	IP string
+	Port *big.Int
+}
+
 type Client interface {
 
 	EthClient() *ethclient.Client
@@ -17,6 +23,10 @@ type Client interface {
 	CCSServiceContractAddress() common.Address
 
 	RegisterCCS(ip string, port *big.Int) error
+
+	ListAllCCS() (error, []CCS)
+
+	NewJob(confId string, ccsAddr common.Address) error
 
 	ScheduleConference(confId string, topic string, startTime *big.Int, duration *big.Int, invitees []common.Address) error
 }
