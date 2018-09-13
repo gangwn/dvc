@@ -95,7 +95,7 @@ func main() {
 		return
 	}
 
-	err = ethClient.RegisterCCS(cfg.Net.LisAddrs[0].IP, big.NewInt(int64(cfg.Net.LisAddrs[0].Port)))
+	err = ethClient.RegisterCCS(cfg.Net.LisAddrs[0].IP, big.NewInt(int64(cfg.Net.LisAddrs[0].Port)), node.ID().Pretty())
 	if err != nil {
 		glog.Errorf("Error register CCS: ", err)
 		return

@@ -67,12 +67,12 @@ func (client *BasicClient) SetUp(password string, gasLimit uint64, gasPrice *big
 		return err
 	}
 
-	client.setUpCCSService(gasLimit, gasPrice)
+	err = client.setUpCCSService(gasLimit, gasPrice)
 	if err != nil {
 		return err
 	}
 
-	client.setUpConferenceService(gasLimit, gasPrice)
+	err = client.setUpConferenceService(gasLimit, gasPrice)
 	if err != nil {
 		return err
 	}
@@ -88,38 +88,46 @@ func (client *BasicClient) CCSServiceContractAddress() common.Address {
 	return client.ccsServiceAddr
 }
 
-func (client *BasicClient) RegisterCCS(ip string, port *big.Int) error {
-	glog.Infof("RegisterCCS, ip: %v, port: %v", ip, port)
-
-	_, err := client.ccsServiceSession.RegisterCCS(ip, port)
+func (client *BasicClient) RegisterCCS(ip string, port *big.Int, peerId string) error {
+	_, err := client.ccsServiceSession.RegisterCCS(ip, port, peerId)
+	glog.Infof("RegisterCCS, ip: %v, port: %v, peerId: %v, err: %v", ip, port, peerId, err)
 
 	return err
 }
 
 func (client *BasicClient) ListAllCCS() (error, []eth.CCS) {
 	glog.Infof("listAllCCS")
-	addr, ip, port, err := client.ccsServiceSession.GetFirstCCS()
+	addr, ip, port, peerId, err := client.ccsServiceSession.GetFirstCCS()
 	if err != nil {
 		return err, nil
 	}
 
 	var ccss []eth.CCS
-	ccs := eth.CCS{addr, ip, port}
+	ccs := eth.CCS{addr, ip, port, peerId}
 	ccss = append(ccss, ccs)
 
-	nextAddr, ip, port, err := client.ccsServiceSession.GetNextCCS(addr)
+	nextAddr, ip, port, peerId, err := client.ccsServiceSession.GetNextCCS(addr)
 	for (err == nil && nextAddr != addr && nextAddr != common.Address{0}) {
-		ccs := eth.CCS{nextAddr, ip, port}
+		ccs := eth.CCS{nextAddr, ip, port, peerId}
 		ccss = append(ccss, ccs)
 
-		nextAddr, ip, port, err = client.ccsServiceSession.GetNextCCS(nextAddr)
+		nextAddr, ip, port, peerId, err = client.ccsServiceSession.GetNextCCS(nextAddr)
 	}
 
 	return err, ccss
 }
 
+func (client *BasicClient) GetCCS(confId string) (error, eth.CCS) {
+	addr, ip, port, peerId, err := client.ccsServiceSession.GetCCS(confId)
+	ccs := eth.CCS{addr, ip, port, peerId}
+
+	glog.Infof("GetCCS, confId: %v, ccsAddr: %v", confId, ccs.Addr.Hex())
+
+	return err, ccs
+}
+
 func (client *BasicClient) NewJob(confId string, ccsAddr common.Address) error {
-	glog.Infof("NewJob, confId: %v, ccsAddr: %v", confId, ccsAddr)
+
 
 	_, err := client.ccsServiceSession.NewJob(confId, ccsAddr)
 	return err

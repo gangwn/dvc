@@ -6,6 +6,7 @@ import (
 	"github.com/multiformats/go-multicodec"
 	"bufio"
 	"github.com/gangwn/dvc/pkg/protocol/pb"
+	"github.com/golang/glog"
 )
 
 type InStream struct {
@@ -29,5 +30,11 @@ func (s *InStream) DecodeMessage() *dvc_protocol.DVCMessage {
 		return message
 	}
 
+	glog.Errorf("Error decode message: %v", err)
+
 	return nil
+}
+
+func (s *InStream) Close() {
+	s.Stream.Close()
 }

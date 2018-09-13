@@ -67,10 +67,17 @@ func (node *BasicNode) SendMessage(pid peer.ID, message *dvc_protocol.DVCMessage
 		return StreamNotFound
 	}
 
-	return stream.SendMessage(message)
+	err := stream.SendMessage(message)
+	if(err != nil) {
+		glog.Errorf("Send message fail, message: %v, err: v", message, err)
+	}
+
+	return err
 }
 
 func (node *BasicNode) Connect(addr string) (peer.ID, error) {
+	glog.Infof("Connect to remote: %v", addr)
+
 	pid, err := node.AddAddrToPeerstore(addr)
 	if err != nil {
 		return pid, err
@@ -112,16 +119,23 @@ const dvcProtocol = "/dvc/0.0.1"
 
 func (node *BasicNode)onMessageReceived(s inet.Stream) {
 	inStream := net.NewInStream(s)
-	message := inStream.DecodeMessage()
-	if message == nil {
-		return
+	for {
+		message := inStream.DecodeMessage()
+		if message == nil {
+			break
+		}
+
+		glog.Infof("Receive message from %s to local peer %s, message type", s.Conn().RemotePeer().Pretty(),
+			s.Conn().LocalPeer().Pretty(), message.GetType())
+
+		if node.msgHandler != nil {
+			node.msgHandler(s.Conn().RemotePeer(), message)
+		}
 	}
 
-	glog.Infof("Receive message from %s to local peer %s, message type", s.Conn().RemotePeer(), s.Conn().LocalPeer(), message.GetType())
+	glog.Infof("Close stream id: %v", s.Conn().RemotePeer().Pretty())
 
-	if node.msgHandler != nil{
-		node.msgHandler(s.Conn().RemotePeer(), message)
-	}
+	inStream.Close()
 }
 
 func (node *BasicNode) addStream(s inet.Stream) bool {
@@ -159,5 +173,6 @@ func (node *BasicNode) newOutStream(pid peer.ID) *net.OutStream {
 
 	outStream := net.NewOutStream(s)
 
+	glog.Infof("Create out stream, peer id: %v", pid.Pretty())
 	return outStream
 }

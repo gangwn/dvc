@@ -3,6 +3,7 @@ package protocol
 import (
 	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"github.com/gangwn/dvc/internal/pkg/ccs/roster"
+	"github.com/golang/glog"
 )
 
 type ProtobufPack struct {
@@ -84,7 +85,7 @@ func (*ProtobufPack) CreateEndConferenceIndication(confId string) (*dvc_protocol
 	message.Type = dvc_protocol.DVCMessage_EndConferenceIndication
 	message.EndConfInd = &dvc_protocol.EndConferenceIndication{}
 
-	message.EndConfRsp.ConferenceId = confId
+	message.EndConfInd.ConferenceId = confId
 
 	return message
 }
@@ -104,10 +105,11 @@ func (*ProtobufPack) CreateRosterMessage(confId string, participant *roster.Part
 	p.Name = participant.Name
 	p.UserId = participant.UserId
 
-	message.RosterMsg.Participants = make([]*dvc_protocol.Participant, 1)
+	//message.RosterMsg.Participants = make([]*dvc_protocol.Participant, 1)
 	message.RosterMsg.Participants = append(message.RosterMsg.Participants, &p)
 	message.RosterMsg.ConferenceId = confId
 
+	glog.Errorf("roster message: %v", message.RosterMsg)
 	return message
 }
 

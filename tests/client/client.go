@@ -17,7 +17,14 @@ import (
 	"strings"
 	"github.com/gangwn/dvc/pkg/eth/events"
 	"flag"
+	"github.com/gangwn/dvc/pkg/eth"
 )
+
+var ConfId string
+
+var ccsMap map[common.Address]eth.CCS
+
+var ccs eth.CCS
 
 func main() {
 	flag.Set("logtostderr", "true")
@@ -31,6 +38,8 @@ func main() {
 	cfgGasLimit := "0x8000000000"
 	cfgGasPrice := 20
 	password := "pass"
+
+	ccsMap = make(map[common.Address]eth.CCS)
 
 	addr := util.NewMultiaddr(lisAddr)
 
@@ -88,9 +97,9 @@ func main() {
 		return
 	}
 
-	//go readCommands(ethClient)
+	go readCommands(ethClient)
 
-	schedule(nil, ethClient)
+	//schedule(nil, ethClient)
 	select {}
 }
 
@@ -99,15 +108,20 @@ func readCommands(client *basiceth.BasicClient) {
   schedule   Schedule a conference
   join       Join a conference
   leave      Leave conference
-  setCCS     set a CCS for a conference`)
+  setCCS     set a CCS for a conference
+  getCCS     get all CCS`)
 
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Print("Input command: ")
 		command := readString(reader)
 
-		if strings.Compare(command, "schedule") == 0 ||  strings.Compare(command, "s") == 0{
+		if strings.Compare(command, "schedule") == 0 ||  strings.Compare(command, "s") == 0 {
 			schedule(reader, client)
+		} else if strings.Compare(command, "setCCS") == 0 {
+			setCCS(reader, client)
+		} else if strings.Compare(command, "getCCS") == 0 {
+			getAllCCS(reader, client)
 		}
 	}
 }
@@ -140,4 +154,40 @@ func schedule(reader *bufio.Reader, client *basiceth.BasicClient)  {
 	if err != nil {
 		glog.Errorf("Error Schedule Conference: %v", err)
 	}
+
+	ConfId = confId
+}
+
+
+func setCCS(reader *bufio.Reader, client *basiceth.BasicClient) {
+	fmt.Print("Set CCS:")
+
+	ccsAddr := readString(reader)
+	ccs = ccsMap[common.HexToAddress(ccsAddr)]
+	client.NewJob(ConfId, ccs.Addr)
+}
+
+func getAllCCS(reader *bufio.Reader, client *basiceth.BasicClient) {
+	fmt.Print("Get all CCS")
+
+	confId := readString(reader)
+	if confId == "" {
+		err, ccss := client.ListAllCCS()
+		if err != nil {
+			glog.Errorf("Error Get CCS: %v", err)
+		} else {
+			for i := range ccss {
+				ccsMap[ccss[i].Addr] = ccss[i]
+				glog.Infof("available css, address :%v, ip: %v, port:%v", ccss[i].Addr.Hex(), ccss[i].IP, ccss[i].Port)
+			}
+		}
+	} else {
+		err, ccs := client.GetCCS(confId)
+		if err != nil {
+			glog.Errorf("Error Get CCS: %v", err)
+		} else {
+			glog.Infof("available css for conf, address :%v, ip: %v, port:%v", ccs.Addr.Hex(), ccs.IP, ccs.Port)
+		}
+	}
+
 }

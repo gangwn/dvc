@@ -14,7 +14,7 @@
         "gethRPCPath": "/Users/gangwan/blockchain/testnet/geth.ipc",
         "keystoreDir": "/Users/gangwan/blockchain/testnet/keystore",
         "ethAccount": "0x1c90eef254b12a36acedd46a115a8d3e7b080258",
-        "contractAddr": "0x1a13eb6cf516a660624c43ca9bf48838a4db887c",
+        "contractAddr": "0x15253be34b7ee592970dfc09d5b6a9d3205c6c34",
         "gasLimit": "0x800000",
         "gasPrice": 20,
         "password": "pass"

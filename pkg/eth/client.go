@@ -10,6 +10,7 @@ type CCS struct {
 	Addr common.Address
 	IP string
 	Port *big.Int
+	PeerId string
 }
 
 type Client interface {
@@ -22,9 +23,11 @@ type Client interface {
 
 	CCSServiceContractAddress() common.Address
 
-	RegisterCCS(ip string, port *big.Int) error
+	RegisterCCS(ip string, port *big.Int, peerId string) error
 
 	ListAllCCS() (error, []CCS)
+
+	GetCCS(confId string) (error, CCS)
 
 	NewJob(confId string, ccsAddr common.Address) error
 
