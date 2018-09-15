@@ -1,5 +1,7 @@
 # Decentralized Video Conferencing Demo
 
+This project is a simple demo to realize a decentralized video conferencing system based on the Ethereum block chain platform.  
+
 ## Build
 
 `cd $GOPATH/src/github.com/gangwn/dvc/`
