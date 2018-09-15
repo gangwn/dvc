@@ -23,7 +23,7 @@ import (
 	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"github.com/gangwn/dvc/internal/pkg/ccs/config"
 	"github.com/gangwn/dvc/pkg/util"
-)
+	)
 
 var ethClient eth.Client
 var wsClient *ws.WSClient
@@ -169,17 +169,17 @@ func handleRequest(request *Request) {
 }
 
 func main() {
-	flag.Parse()
-	log.SetFlags(0)
-
 	flag.Set("logtostderr", "true")
+
+
+	ethAccount := flag.String("account", "0x673bf560ba83e2fc3bbb0c15c341918176785c7c", "ETH Account")
+	keystoreDir := flag.String("keystore_dir", "/Users/gangwan/blockchain/testnet/keystore", "Key store directory")
+	contractAddr := flag.String("contract_address", "0x15253be34b7ee592970dfc09d5b6a9d3205c6c34", "Contract address")
+	gethRPCPath := flag.String("geth_rpc_path", "/Users/gangwan/blockchain/testnet/geth.ipc", "geth rpc path")
+
 	flag.Parse()
 
 	lisAddr :=[] config.ListenAddress{{"127.0.0.1", 8101}}
-	ethAccount := "0x673bf560ba83e2fc3bbb0c15c341918176785c7c"
-	keystoreDir := "/Users/gangwan/blockchain/testnet/keystore"
-	gethRPCPath := "/Users/gangwan/blockchain/testnet/geth.ipc"
-	contractAddr := "0x15253be34b7ee592970dfc09d5b6a9d3205c6c34"
 	cfgGasLimit := "0x8000000000"
 	cfgGasPrice := 20
 	password := "pass"
@@ -205,8 +205,8 @@ func main() {
 	//node.SendMessage(id, message)
 
 
-	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, ContractAddr: %s", ethAccount, keystoreDir, gethRPCPath, contractAddr)
-	ethClient, err = basiceth.NewBasicClient(ethAccount, keystoreDir, gethRPCPath, contractAddr)
+	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, ContractAddr: %s", *ethAccount, *keystoreDir, *gethRPCPath, *contractAddr)
+	ethClient, err = basiceth.NewBasicClient(*ethAccount, *keystoreDir, *gethRPCPath, *contractAddr)
 	if err != nil {
 		glog.Errorf("Create basic eth client fail: ", err)
 		return

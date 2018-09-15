@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/moment/moment.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+    <title>DVC Client</title>
+
+    <script type="text/javascript">
+  		$(document).ready(function(){
+  			start_connect();
+
+			  $("#schedule").click(function(event){
+			    event.preventDefault();
+			    schedule_conference();
+			  });
+
+        $("#list_ccs").click(function(event){
+          event.preventDefault();
+          list_ccs();
+        });
+
+			  $("#get_ccs").click(function(event){
+			    event.preventDefault();
+			    get_ccs();
+			  });
+			  
+			  $("#set_ccs").click(function(event){
+			    event.preventDefault();
+			    set_ccs();
+			  });
+
+        $("#join_conference").click(function(event){
+          event.preventDefault();
+          join_conference();
+        });
+
+        $("#leave_conference").click(function(event){
+          event.preventDefault();
+          leave_conference();
+        });
+
+        $("#end_conference").click(function(event){
+          event.preventDefault();
+          end_conference();
+        });
+		});
+  	
+  </script>
+
+  </head>
+  <body>
+    <h1>Enter your command: </h1>
+    <button type="button" id="schedule" >Schedule Conference</button>
+    <button type="button" id="list_ccs" >List all CCS</button>
+    <button type="button" id="set_ccs">Set CCS</button>
+    <button type="button" id="get_ccs">Get CCS</button>
+
+    <button type="button" id="join_conference">Join conference</button>
+    <button type="button" id="leave_conference">Leave conference</button>
+    <button type="button" id="end_conference">End conference</button>
+
+    <h1>Notification: </h1>
+	<div id="append"></div>
+  </body>
+
+</html>
