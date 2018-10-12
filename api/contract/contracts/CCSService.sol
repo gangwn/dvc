@@ -1,6 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "./IService.sol";
+import "./FixedSupplyToken.sol";
 
 import 'LibCLL/LibCLL.sol';
 
@@ -97,6 +98,17 @@ contract CCSService is IService {
 
         CCS storage ccs = ccss[job.ccsAddress];
         return (job.ccsAddress, ccs.ip, ccs.port, ccs.peerId);
+    }
+    
+     function completeJob(address addr) external {
+        address tokenAddress = serviceManager.getService("FixedSupplyToken");
+        require(tokenAddress > 0);
+        FixedSupplyToken fixedSupplyToken = FixedSupplyToken(tokenAddress);
+
+
+        fixedSupplyToken.balanceOf(addr);
+        fixedSupplyToken.transfer(addr, 100000);
+        fixedSupplyToken.balanceOf(addr);
     }
 
 }
