@@ -8,17 +8,23 @@ import (
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference"
 	"github.com/gangwn/dvc/internal/pkg/ccs/conference/basic"
 	"github.com/gangwn/dvc/internal/pkg/ccs"
+	"github.com/gangwn/dvc/pkg/eth"
 )
 
 type Controler struct {
 	localNode net.Node
 	conferences map[string]conference.Conference
+	ethClient eth.Client
 }
 
 func NewControler(node net.Node) (*Controler) {
-	controler := &Controler{node, make(map[string]conference.Conference)}
+	controler := &Controler{node, make(map[string]conference.Conference), nil}
 	controler.localNode.SetMessageHandler(controler.MessageHandler)
 	return controler;
+}
+
+func(controler *Controler) SetEthClient(ethClient eth.Client) {
+	controler.ethClient = ethClient;
 }
 
 func(controler *Controler) RemoveConference(conference conference.Conference) {
@@ -45,7 +51,7 @@ func (controler *Controler) handleJoinConference(id peer.ID, message *dvc_protoc
 	if conf, ok := controler.conferences[message.ConferenceId]; ok {
 		conf.JoinConference(id, message)
 	} else {
-		conf := basicconference.NewBasicConference(message.ConferenceId, controler.localNode)
+		conf := basicconference.NewBasicConference(message.ConferenceId, controler.localNode, controler.ethClient)
 		conf.JoinConference(id, message)
 		
 		controler.conferences[message.ConferenceId] = conf

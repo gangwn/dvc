@@ -6,6 +6,7 @@ import "./FixedSupplyToken.sol";
 import 'LibCLL/LibCLL.sol';
 
 contract CCSService is IService {
+     FixedSupplyToken public fixedSupplyToken;
 
     using LibCLLu for LibCLLu.CLL;
 
@@ -33,7 +34,9 @@ contract CCSService is IService {
 
     event NewJobCreated(string confId, address ccsAddress, string ip, int port, string peerId);
 
-    constructor(address serviceManagerAddr) public IService(serviceManagerAddr) {}
+    constructor(address serviceManagerAddr, address tokenAddr) public IService(serviceManagerAddr) {
+        fixedSupplyToken = FixedSupplyToken(tokenAddr);
+    }
 
     function registerCCS(string ip, int port, string peerId) external {
         CCS storage ccs = ccss[msg.sender];
@@ -99,12 +102,8 @@ contract CCSService is IService {
         CCS storage ccs = ccss[job.ccsAddress];
         return (job.ccsAddress, ccs.ip, ccs.port, ccs.peerId);
     }
-    
+ 
      function completeJob(address addr) external {
-        address tokenAddress = serviceManager.getService("FixedSupplyToken");
-        require(tokenAddress > 0);
-        FixedSupplyToken fixedSupplyToken = FixedSupplyToken(tokenAddress);
-
 
         fixedSupplyToken.balanceOf(addr);
         fixedSupplyToken.transfer(addr, 100000);

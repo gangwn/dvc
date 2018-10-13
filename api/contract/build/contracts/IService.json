@@ -1,0 +1,845 @@
+{
+  "contractName": "IService",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "serviceManager",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "serviceManagerAddr",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061016b83398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505060e9806100826000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633998fdd3146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a723058201590898045601c2c453be759251751e885f34fc90edf65117ca6b08657a8498e0029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633998fdd3146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a723058201590898045601c2c453be759251751e885f34fc90edf65117ca6b08657a8498e0029",
+  "sourceMap": "58:419:2:-;;;359:115;8:9:-1;5:2;;;30:1;27;20:12;5:2;359:115:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;448:18;416:14;;:51;;;;;;;;;;;;;;;;;;359:115;58:419;;;;;;",
+  "deployedSourceMap": "58:419:2:-;;;;;;;;;;;;;;;;;;;;;;;;83:36;;8:9:-1;5:2;;;30:1;27;20:12;5:2;83:36:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\n\nimport \"./ServiceManager.sol\";\n\ncontract IService {\n\n    ServiceManager public serviceManager;\n\n    struct Conference {\n        string confId;\n        address creatorAddr;  // the meeting creator address\n        string topic;\n        uint256 startTime;\n        uint duration;        // seconds\n        address[] invitees;\n    }\n\n    constructor(address serviceManagerAddr) public {\n        serviceManager = ServiceManager(serviceManagerAddr);\n    }\n\n}",
+  "sourcePath": "/Users/gangwan/Documents/work/go/src/github.com/gangwn/dvc/api/contract/contracts/IService.sol",
+  "ast": {
+    "absolutePath": "/Users/gangwan/Documents/work/go/src/github.com/gangwn/dvc/api/contract/contracts/IService.sol",
+    "exportedSymbols": {
+      "IService": [
+        980
+      ]
+    },
+    "id": 981,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 950,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "absolutePath": "/Users/gangwan/Documents/work/go/src/github.com/gangwn/dvc/api/contract/contracts/ServiceManager.sol",
+        "file": "./ServiceManager.sol",
+        "id": 951,
+        "nodeType": "ImportDirective",
+        "scope": 981,
+        "sourceUnit": 1029,
+        "src": "26:30:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 980,
+        "linearizedBaseContracts": [
+          980
+        ],
+        "name": "IService",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 953,
+            "name": "serviceManager",
+            "nodeType": "VariableDeclaration",
+            "scope": 980,
+            "src": "83:36:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ServiceManager_$1028",
+              "typeString": "contract ServiceManager"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 952,
+              "name": "ServiceManager",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1028,
+              "src": "83:14:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                "typeString": "contract ServiceManager"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IService.Conference",
+            "id": 967,
+            "members": [
+              {
+                "constant": false,
+                "id": 955,
+                "name": "confId",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "154:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 954,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "154:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 957,
+                "name": "creatorAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "177:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 956,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "177:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 959,
+                "name": "topic",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "238:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 958,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "238:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 961,
+                "name": "startTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "260:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 960,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "260:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 963,
+                "name": "duration",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "287:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 962,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "287:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 966,
+                "name": "invitees",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "328:18:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 964,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "328:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 965,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "328:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Conference",
+            "nodeType": "StructDefinition",
+            "scope": 980,
+            "src": "126:227:2",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 978,
+              "nodeType": "Block",
+              "src": "406:68:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 976,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 972,
+                      "name": "serviceManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 953,
+                      "src": "416:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                        "typeString": "contract ServiceManager"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 974,
+                          "name": "serviceManagerAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 969,
+                          "src": "448:18:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 973,
+                        "name": "ServiceManager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1028,
+                        "src": "433:14:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_ServiceManager_$1028_$",
+                          "typeString": "type(contract ServiceManager)"
+                        }
+                      },
+                      "id": 975,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "433:34:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                        "typeString": "contract ServiceManager"
+                      }
+                    },
+                    "src": "416:51:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                      "typeString": "contract ServiceManager"
+                    }
+                  },
+                  "id": 977,
+                  "nodeType": "ExpressionStatement",
+                  "src": "416:51:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 979,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 970,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 969,
+                  "name": "serviceManagerAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 979,
+                  "src": "371:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 968,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "371:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "370:28:2"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 971,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "406:0:2"
+            },
+            "scope": 980,
+            "src": "359:115:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 981,
+        "src": "58:419:2"
+      }
+    ],
+    "src": "0:477:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/gangwan/Documents/work/go/src/github.com/gangwn/dvc/api/contract/contracts/IService.sol",
+    "exportedSymbols": {
+      "IService": [
+        980
+      ]
+    },
+    "id": 981,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 950,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "absolutePath": "/Users/gangwan/Documents/work/go/src/github.com/gangwn/dvc/api/contract/contracts/ServiceManager.sol",
+        "file": "./ServiceManager.sol",
+        "id": 951,
+        "nodeType": "ImportDirective",
+        "scope": 981,
+        "sourceUnit": 1029,
+        "src": "26:30:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 980,
+        "linearizedBaseContracts": [
+          980
+        ],
+        "name": "IService",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 953,
+            "name": "serviceManager",
+            "nodeType": "VariableDeclaration",
+            "scope": 980,
+            "src": "83:36:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ServiceManager_$1028",
+              "typeString": "contract ServiceManager"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 952,
+              "name": "ServiceManager",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1028,
+              "src": "83:14:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                "typeString": "contract ServiceManager"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IService.Conference",
+            "id": 967,
+            "members": [
+              {
+                "constant": false,
+                "id": 955,
+                "name": "confId",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "154:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 954,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "154:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 957,
+                "name": "creatorAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "177:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 956,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "177:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 959,
+                "name": "topic",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "238:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 958,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "238:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 961,
+                "name": "startTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "260:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 960,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "260:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 963,
+                "name": "duration",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "287:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 962,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "287:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 966,
+                "name": "invitees",
+                "nodeType": "VariableDeclaration",
+                "scope": 967,
+                "src": "328:18:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 964,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "328:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 965,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "328:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Conference",
+            "nodeType": "StructDefinition",
+            "scope": 980,
+            "src": "126:227:2",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 978,
+              "nodeType": "Block",
+              "src": "406:68:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 976,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 972,
+                      "name": "serviceManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 953,
+                      "src": "416:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                        "typeString": "contract ServiceManager"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 974,
+                          "name": "serviceManagerAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 969,
+                          "src": "448:18:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 973,
+                        "name": "ServiceManager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1028,
+                        "src": "433:14:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_ServiceManager_$1028_$",
+                          "typeString": "type(contract ServiceManager)"
+                        }
+                      },
+                      "id": 975,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "433:34:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                        "typeString": "contract ServiceManager"
+                      }
+                    },
+                    "src": "416:51:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ServiceManager_$1028",
+                      "typeString": "contract ServiceManager"
+                    }
+                  },
+                  "id": 977,
+                  "nodeType": "ExpressionStatement",
+                  "src": "416:51:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 979,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 970,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 969,
+                  "name": "serviceManagerAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 979,
+                  "src": "371:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 968,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "371:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "370:28:2"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 971,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "406:0:2"
+            },
+            "scope": 980,
+            "src": "359:115:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 981,
+        "src": "58:419:2"
+      }
+    ],
+    "src": "0:477:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-10-13T04:21:08.649Z"
+}

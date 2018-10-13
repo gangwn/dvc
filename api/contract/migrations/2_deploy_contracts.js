@@ -15,11 +15,12 @@ module.exports = function(deployer) {
 
         await deployer.deploy(Utils);
         await deployer.link(Utils, ConferenceService);
-        await deployer.deploy(Token);
+        // await deployer.deploy(Token);
 
         await deployHelper.deployContract(Token, "FixedSupplyToken")
         await deployHelper.deployContract(ConferenceService, "ConferenceService", serviceManager.address)
 
-        await deployHelper.deployContract(CCSService, "CCSService", serviceManager.address)
+        const tokenContract = await Token.deployed()
+        await deployHelper.deployContract(CCSService, "CCSService", serviceManager.address, tokenContract.address) 
     })
 };

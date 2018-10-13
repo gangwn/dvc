@@ -8,6 +8,7 @@ import (
 	"github.com/gangwn/dvc/internal/pkg/ccs/handler"
 	"github.com/gangwn/dvc/internal/pkg/ccs"
 	"github.com/gangwn/dvc/pkg/protocol/pb"
+	"github.com/gangwn/dvc/pkg/eth"
 )
 
 type BasicConference struct {
@@ -15,12 +16,13 @@ type BasicConference struct {
 	roster *roster.Roster
 
 	handler handler.Handler
+	ethClient eth.Client
 }
 
-func NewBasicConference(confId string, localNode net.Node) (*BasicConference) {
+func NewBasicConference(confId string, localNode net.Node, ethClient eth.Client) (*BasicConference) {
 	pbPack := &protocol.ProtobufPack{}
 
-	conf := &BasicConference{confId, roster.NewRoster(),nil}
+	conf := &BasicConference{confId, roster.NewRoster(),nil, ethClient}
 
 	msgHandler := handler.NewMessageHandler(conf,localNode,pbPack)
 	conf.handler = msgHandler
@@ -64,6 +66,9 @@ func (conf *BasicConference) LeaveConference(id peer.ID, message *dvc_protocol.L
 
 func (conf *BasicConference) EndConference(id peer.ID, message *dvc_protocol.EndConferenceRequest) ccs.CCSErrorCode {
 	conf.handler.OnAfterEndConference(message.UserId, id, ccs.CCSErrorCode_Success)
+
+	conf.ethClient.CompleteJob()
+
 	return ccs.CCSErrorCode_Success
 }
 

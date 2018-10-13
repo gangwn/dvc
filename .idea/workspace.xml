@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="426f9a5b-d825-40d3-8157-4a781fb753f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Gopkg.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gopkg.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/contract/contracts/CCSService.sol" beforeDir="false" afterPath="$PROJECT_DIR$/api/contract/contracts/CCSService.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/contract/contracts/FixedSupplyToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/api/contract/contracts/FixedSupplyToken.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/contract/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/contract/migrations/2_deploy_contracts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/CCSService.abi" beforeDir="false" afterPath="$PROJECT_DIR$/build/contracts/CCSService.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/dvc.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/dvc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/dvc.json" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dvc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/ccs/conference/basic/basic_conference.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/ccs/conference/basic/basic_conference.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/ccs/config/dvc_config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/ccs/config/dvc_config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/ccs/controler/controler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/ccs/controler/controler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/eth/basic/basic_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/eth/basic/basic_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/eth/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/eth/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/eth/contracts/ccs_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/eth/contracts/ccs_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate_native_code.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_native_code.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/client/dvc_proxy.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/client/dvc_proxy.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-802038134">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="25" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="5" />
+          <entry key="project.open.time.12" value="4" />
+          <entry key="project.open.time.13" value="5" />
+          <entry key="project.open.time.15" value="2" />
+          <entry key="project.open.time.16" value="3" />
+          <entry key="project.open.time.17" value="2" />
+          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.9" value="3" />
+          <entry key="project.opened" value="34" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="abi" value="1" />
+          <entry key="go" value="468" />
+          <entry key="js" value="35" />
+          <entry key="json" value="28" />
+          <entry key="lock" value="1" />
+          <entry key="md" value="8" />
+          <entry key="proto" value="10" />
+          <entry key="sh" value="10" />
+          <entry key="sol" value="70" />
+          <entry key="toml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Bash" value="9" />
+          <entry key="Go" value="468" />
+          <entry key="JSON" value="28" />
+          <entry key="JavaScript" value="35" />
+          <entry key="Markdown" value="6" />
+          <entry key="PLAIN_TEXT" value="79" />
+          <entry key="PROTO" value="7" />
+          <entry key="TOML file" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="go" value="14919" />
+          <entry key="js" value="485" />
+          <entry key="json" value="274" />
+          <entry key="md" value="912" />
+          <entry key="proto" value="595" />
+          <entry key="sh" value="322" />
+          <entry key="sol" value="3311" />
+          <entry key="toml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Bash" value="322" />
+          <entry key="Go" value="14919" />
+          <entry key="JSON" value="274" />
+          <entry key="JavaScript" value="485" />
+          <entry key="Markdown" value="898" />
+          <entry key="PLAIN_TEXT" value="3375" />
+          <entry key="PROTO" value="547" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.go.postfix.template.usages.trigger">
+        <counts>
+          <entry key=".append" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configs/dvc.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="32" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cmd/dvc.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="72" column="42" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pkg/eth/contracts/ccs_service.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/conference/conference.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/conference/basic/basic_conference.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/client/dvc_proxy.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="208" column="108" selection-start-line="208" selection-start-column="108" selection-end-line="208" selection-end-column="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/controler/controler.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="53" column="113" selection-start-line="53" selection-start-column="113" selection-end-line="53" selection-end-column="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pkg/eth/client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="15" column="11" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pkg/eth/account_manager.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pkg/eth/contracts/fixed_supply_token.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ethClient</find>
+      <find>getccs</find>
+      <find>outStream</find>
+      <find>outStreams</find>
+      <find>msgHandler</find>
+      <find>onMessageReceived</find>
+      <find>newOutStream</find>
+      <find>addStream</find>
+      <find>getOutStream</find>
+      <find>OnAfterJoinConference,</find>
+      <find>ErrMsgTooLarge</find>
+      <find>read message</find>
+      <find>ReadLen</find>
+      <find>before</find>
+      <find>Decode</find>
+      <find>dvcProtocol</find>
+      <find>sendme</find>
+      <find>before read message</find>
+      <find>ReadMsg</find>
+      <find>mc</find>
+      <find>ConsumeHeader</find>
+      <find>ConsumeHeader,</find>
+      <find>HeaderMsgio</find>
+      <find>Write</find>
+      <find>SendMessage</find>
+      <find>Participants</find>
+      <find>conferenceServiceAddr</find>
+      <find>HTTPAddr</find>
+      <find>setUpCCSService</find>
+      <find>ethc</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>ConferenceRequest</replace>
+    </replaceStrings>
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.10.3/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoDepProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/internal/pkg/ccs/handler/handler.go" />
+        <option value="$PROJECT_DIR$/pkg/net/node.go" />
+        <option value="$PROJECT_DIR$/api/contracts/WebexMeeting.sol" />
+        <option value="$PROJECT_DIR$/api/contracts/Utils.sol" />
+        <option value="$PROJECT_DIR$/api/contracts/ConferenceManager.sol" />
+        <option value="$PROJECT_DIR$/api/contracts/UserService.sol.go" />
+        <option value="$PROJECT_DIR$/api/contracts/ConferenceService.sol" />
+        <option value="$PROJECT_DIR$/api/contracts/UserService.sol" />
+        <option value="$PROJECT_DIR$/api/contracts/libraries/Conference.sol.go" />
+        <option value="$PROJECT_DIR$/api/contracts/libraries/Conference.sol" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/IService.sol.go" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/Utils.sol" />
+        <option value="$PROJECT_DIR$/tests/truffle/migrations/2_deploy_contracts.js" />
+        <option value="$PROJECT_DIR$/api/contract/truffle.js" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/IService.sol" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/UserService.sol" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/ServiceManager.sol" />
+        <option value="$PROJECT_DIR$/Gopkg.toml" />
+        <option value="$PROJECT_DIR$/api/contract/migrations/deploy_helper.js" />
+        <option value="$PROJECT_DIR$/pkg/eth/event_listener.go" />
+        <option value="$PROJECT_DIR$/tests/geth/PrivateTestNetGenesis.json" />
+        <option value="$PROJECT_DIR$/pkg/eth/basic/basic_event_listener.go" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/ConferenceService.sol" />
+        <option value="$PROJECT_DIR$/scripts/generate_native_code.sh" />
+        <option value="$PROJECT_DIR$/api/contract/migrations/2_deploy_contracts.js" />
+        <option value="$PROJECT_DIR$/tests/client/client.go" />
+        <option value="$PROJECT_DIR$/scripts/generate_protocol.sh" />
+        <option value="$PROJECT_DIR$/tests/client/client_ui.go" />
+        <option value="$PROJECT_DIR$/pkg/eth/events/conference_scheduled_event.go" />
+        <option value="$PROJECT_DIR$/tests/client/ws_client.go" />
+        <option value="$PROJECT_DIR$/tests/client/ws/ws_client.go" />
+        <option value="$PROJECT_DIR$/pkg/net/in_stream.go" />
+        <option value="$PROJECT_DIR$/internal/pkg/ccs/handler/message_handler.go" />
+        <option value="$PROJECT_DIR$/vendor/github.com/libp2p/go-msgio/num.go" />
+        <option value="$PROJECT_DIR$/vendor/github.com/libp2p/go-msgio/msgio.go" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/CCSService.sol" />
+        <option value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/header.go" />
+        <option value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/protobuf/pb.go" />
+        <option value="$PROJECT_DIR$/pkg/protocol/protobuf_pack.go" />
+        <option value="$PROJECT_DIR$/pkg/net/out_stream.go" />
+        <option value="$PROJECT_DIR$/pkg/net/basic/basic_node.go" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/configs/dvc.json" />
+        <option value="$PROJECT_DIR$/internal/pkg/ccs/config/dvc_config.go" />
+        <option value="$PROJECT_DIR$/api/contract/contracts/FixedSupplyToken.sol" />
+        <option value="$PROJECT_DIR$/pkg/eth/client.go" />
+        <option value="$PROJECT_DIR$/pkg/eth/basic/basic_client.go" />
+        <option value="$PROJECT_DIR$/cmd/dvc.go" />
+        <option value="$PROJECT_DIR$/internal/pkg/ccs/controler/controler.go" />
+        <option value="$PROJECT_DIR$/internal/pkg/ccs/conference/basic/basic_conference.go" />
+        <option value="$PROJECT_DIR$/tests/client/dvc_proxy.go" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/api/contract/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/api/contract/package.json" />
+      <path value="$PROJECT_DIR$/tests/demo/node_modules/moment/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/gxed/GoEndian/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/gxed/eventfd/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/gxed/hashland/keccakpg/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/ipfs/go-log/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/jbenet/goprocess/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-addr-util/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-conn-security-multistream/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-conn-security/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-flow-metrics/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-circuit/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-crypto/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-host/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-interface-connmgr/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-interface-pnet/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-loggables/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-metrics/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-nat/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-net/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-peer/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-peerstore/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-protocol/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-secio/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-swarm/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-transport-upgrader/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-transport/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-maddr-filter/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-msgio/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-reuseport-transport/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-reuseport/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-stream-muxer/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-tcp-transport/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/libp2p/go-ws-transport/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multiaddr-dns/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multiaddr-net/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multiaddr/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multihash/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/multiformats/go-multistream/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/go-multiplex/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/go-notifier/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/go-smux-multiplex/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/go-smux-multistream/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/go-smux-yamux/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/mafmt/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/multiaddr-filter/package.json" />
+      <path value="$PROJECT_DIR$/vendor/github.com/whyrusleeping/yamux/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="contract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="cmd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="ccs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="ccs" type="462c0819:PsiDirectoryNode" />
+              <item name="conference" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="ccs" type="462c0819:PsiDirectoryNode" />
+              <item name="conference" type="462c0819:PsiDirectoryNode" />
+              <item name="basic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="ccs" type="462c0819:PsiDirectoryNode" />
+              <item name="controler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="eth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="eth" type="462c0819:PsiDirectoryNode" />
+              <item name="basic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="eth" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+              <item name="basic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dvc" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dvc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/api/contract/node_modules" />
+      <recent name="$PROJECT_DIR$/api/contract/contracts" />
+      <recent name="$PROJECT_DIR$/api/contract/migrations" />
+      <recent name="$PROJECT_DIR$/tests/truffle" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/client/ws" />
+      <recent name="$PROJECT_DIR$/api/contract/migrations" />
+      <recent name="$PROJECT_DIR$/api/contract" />
+      <recent name="$PROJECT_DIR$/api" />
+      <recent name="$PROJECT_DIR$/pkg/protocol/pb" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Build.go build dvc_proxy.go">
+    <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="dvc" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/tests/client/client.go" />
+      <package value="github.com/gangwn/dvc" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build dvc_proxy.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="dvc" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/tests/client/dvc_proxy.go" />
+      <package value="github.com/gangwn/dvc" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build client.go" />
+      <item itemvalue="Go Build.go build dvc_proxy.go" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build dvc_proxy.go" />
+        <item itemvalue="Go Build.go build client.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20529328" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.31084338" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4985694" weight="0.49036145" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.35903615" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21173105" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31084338" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23614457" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:///usr/local/Cellar/go/1.10.3/libexec/src/encoding/json/stream.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/gorilla/websocket/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/events/conference_scheduled_event.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="14" column="29" selection-start-line="14" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/gorilla/websocket/conn.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="1016" column="49" lean-forward="true" selection-start-line="1016" selection-start-column="49" selection-end-line="1016" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/client/client_ui.go" />
+    <entry file="file://$PROJECT_DIR$/tests/client/ws/ws_client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/client/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/handler/handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/gogo/protobuf/proto/decode.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="313" column="4" selection-start-line="313" selection-start-column="4" selection-end-line="313" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.10.3/libexec/src/errors/errors.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/basic/basic_event_listener.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/libp2p/go-libp2p-host/host.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="60" column="62" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/net/node.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/net/in_stream.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.10.3/libexec/src/encoding/binary/binary.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="366" column="26" selection-start-line="366" selection-start-column="26" selection-end-line="366" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.10.3/libexec/src/bufio/bufio.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="592" column="17" selection-start-line="592" selection-start-column="17" selection-end-line="592" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/libp2p/go-msgio/num.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/contract/contracts/ServiceManager.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/contract/contracts/ConferenceService.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/contract/contracts/IService.sol">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/libp2p/go-msgio/msgio.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/coding.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/handler/message_handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/header.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/multiformats/go-multicodec/protobuf/pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.10.3/libexec/src/io/io.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="90" column="9" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/protobuf/dvc.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/geth/PrivateTestNetGenesis.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/net/out_stream.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/protocol/protobuf_pack.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="108" column="34" selection-start-line="108" selection-start-column="34" selection-end-line="108" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/protocol/pb/dvc.pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3780">
+          <caret line="254" column="16" selection-start-line="254" selection-start-column="4" selection-end-line="254" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="32">
+            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/ethereum/go-ethereum/ethclient/ethclient.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="40" column="33" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/demo/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/config/dvc_config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/go-stack/stack/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="105">
+            <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/contract/contracts/CCSService.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/net/basic/basic_node.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/contract/contracts/FixedSupplyToken.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="88" column="34" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/contracts/fixed_supply_token.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/ethereum/go-ethereum/accounts/accounts.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/account_manager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/contracts/ccs_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/conference/conference.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/controler/controler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="53" column="113" selection-start-line="53" selection-start-column="113" selection-end-line="53" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/pkg/ccs/conference/basic/basic_conference.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/basic/basic_client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="39" column="67" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="67" />
+          <folding>
+            <element signature="e#18#339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/dvc.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/eth/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/client/dvc_proxy.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="208" column="108" selection-start-line="208" selection-start-column="108" selection-end-line="208" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/dvc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

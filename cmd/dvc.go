@@ -69,8 +69,12 @@ func main() {
 		return
 	}
 
-	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, ContractAddr: %s", cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, cfg.Eth.ContractAddr)
-	ethClient, err := basiceth.NewBasicClient(cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, cfg.Eth.ContractAddr)
+	rpcUrl := "";
+	if cfg.Eth.RPCAddress != "" && cfg.Eth.RPCPort != 0 {
+		rpcUrl = "http://" + cfg.Eth.RPCAddress + ":" + strconv.Itoa(cfg.Eth.RPCPort)
+	}
+	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, rpcUrl: %s, ContractAddr: %s", cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, rpcUrl, cfg.Eth.ContractAddr)
+	ethClient, err := basiceth.NewBasicClient(cfg.Eth.EthAccount, cfg.Eth.KeystoreDir, cfg.Eth.GethRPCPath, rpcUrl, cfg.Eth.ContractAddr)
 	if err != nil {
 		glog.Errorf("Create basic eth client fail: ", err)
 		return
@@ -100,6 +104,8 @@ func main() {
 		glog.Errorf("Error register CCS: ", err)
 		return
 	}
+
+	controler.SetEthClient(ethClient)
 
 	select {}
 }

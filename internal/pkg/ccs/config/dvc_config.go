@@ -27,6 +27,8 @@ type KeyJson struct {
 
 type eth struct {
 	GethRPCPath string `json:"gethRPCPath"`
+	RPCAddress string `json:"rpcAddress"`
+	RPCPort int `json:"rpcPort"`
 	KeystoreDir string `json:"keystoreDir"`
 	EthAccount string `json:"ethAccount"`
 	ContractAddr string `json:"contractAddr"`

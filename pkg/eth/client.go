@@ -32,4 +32,6 @@ type Client interface {
 	NewJob(confId string, ccsAddr common.Address) error
 
 	ScheduleConference(confId string, topic string, startTime *big.Int, duration *big.Int, invitees []common.Address) error
+
+	CompleteJob() error
 }

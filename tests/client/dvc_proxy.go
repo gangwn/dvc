@@ -1,29 +1,28 @@
 package main
 
-
 import (
 	"flag"
 	"log"
 	"net/http"
 
-	"github.com/gorilla/websocket"
-	"math/big"
-	"github.com/golang/glog"
-	"github.com/gangwn/dvc/pkg/eth/events"
-					"github.com/gangwn/dvc/pkg/net/basic"
-	"github.com/gangwn/dvc/pkg/eth/basic"
-	"strconv"
 	"encoding/json"
-				"github.com/ethereum/go-ethereum/common"
-	"github.com/gangwn/dvc/pkg/eth"
-	"github.com/gangwn/dvc/tests/client/ws"
-	"github.com/gangwn/dvc/pkg/protocol"
-	"github.com/satori/go.uuid"
-	"github.com/libp2p/go-libp2p-peer"
-	"github.com/gangwn/dvc/pkg/protocol/pb"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gangwn/dvc/internal/pkg/ccs/config"
+	"github.com/gangwn/dvc/pkg/eth"
+	"github.com/gangwn/dvc/pkg/eth/basic"
+	"github.com/gangwn/dvc/pkg/eth/events"
+	"github.com/gangwn/dvc/pkg/net/basic"
+	"github.com/gangwn/dvc/pkg/protocol"
+	"github.com/gangwn/dvc/pkg/protocol/pb"
 	"github.com/gangwn/dvc/pkg/util"
-	)
+	"github.com/gangwn/dvc/tests/client/ws"
+	"github.com/golang/glog"
+	"github.com/gorilla/websocket"
+	"github.com/libp2p/go-libp2p-peer"
+	"github.com/satori/go.uuid"
+	"math/big"
+	"strconv"
+)
 
 var ethClient eth.Client
 var wsClient *ws.WSClient
@@ -32,27 +31,26 @@ var userId string
 var ccsId peer.ID
 
 type Request struct {
-	Type string `json:"type"`
+	Type               string             `json:"type"`
 	ScheduleConference scheduleConference `json:"scheduleConference""`
-	ListCCS listCCSJson `json:"setCCS""`
-	GetCCS getCCSJson `json:"getCCS""`
-	Join joinJson `json:"join""`
-	End endJson `json:"end""`
-	Leave leaveJson `json:"leave""`
-
+	ListCCS            listCCSJson        `json:"setCCS""`
+	GetCCS             getCCSJson         `json:"getCCS""`
+	Join               joinJson           `json:"join""`
+	End                endJson            `json:"end""`
+	Leave              leaveJson          `json:"leave""`
 }
 
 type scheduleConference struct {
-	ConfId string `json:"confId"`
-	ConfName string `json:"confName""`
-	Duration int64 `json:"duration"`
-	StartTime int64 `json:"startTime"`
-	Invitees []string `json:"invitees"`
+	ConfId    string   `json:"confId"`
+	ConfName  string   `json:"confName""`
+	Duration  int64    `json:"duration"`
+	StartTime int64    `json:"startTime"`
+	Invitees  []string `json:"invitees"`
 }
 
 type listCCSJson struct {
 	ConfId string `json:"confId"`
-	CCS string `json:"ccs""`
+	CCS    string `json:"ccs""`
 }
 
 type getCCSJson struct {
@@ -60,8 +58,8 @@ type getCCSJson struct {
 }
 
 type joinJson struct {
-	ConfId string `json:"confId"`
-	CCS ccsJson `json:"ccs"`
+	ConfId string  `json:"confId"`
+	CCS    ccsJson `json:"ccs"`
 }
 
 type endJson struct {
@@ -73,17 +71,16 @@ type leaveJson struct {
 }
 
 type ccsJson struct {
-	IP string `json:"ip"`
-	Port *big.Int `json:"port"`
-	PeerId string `json:"peerId"`
-
+	IP     string   `json:"ip"`
+	Port   *big.Int `json:"port"`
+	PeerId string   `json:"peerId"`
 }
 
 var HTTPAddr = flag.String("addr", "localhost:8080", "http service address")
 
 var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool {
 	return true
-},} // use default options
+}} // use default options
 
 func echo(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
@@ -92,7 +89,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	wsClient = &ws.WSClient{conn, make(chan []byte),handleMessage}
+	wsClient = &ws.WSClient{conn, make(chan []byte), handleMessage}
 
 	go wsClient.Read()
 	go wsClient.Write()
@@ -109,18 +106,18 @@ func handleMessage(message []byte) {
 func handleRequest(request *Request) {
 	if request.Type == "scheduleConference" {
 
-		invitees :=[] common.Address{common.HexToAddress(request.ScheduleConference.Invitees[0])}
+		invitees := []common.Address{common.HexToAddress(request.ScheduleConference.Invitees[0])}
 
 		ethClient.ScheduleConference(request.ScheduleConference.ConfId, request.ScheduleConference.ConfName,
 			big.NewInt(request.ScheduleConference.StartTime), big.NewInt(request.ScheduleConference.Duration), invitees)
-	} else if  request.Type == "listCCS" {
+	} else if request.Type == "listCCS" {
 		err, ccss := ethClient.ListAllCCS()
 		if err != nil {
 			glog.Errorf("Error Get CCS: %v", err)
 		} else {
-			handleListAllCCS(ccss);
+			handleListAllCCS(ccss)
 		}
-	} else if  request.Type == "setCCS" {
+	} else if request.Type == "setCCS" {
 		ethClient.NewJob(request.ListCCS.ConfId, common.HexToAddress(request.ListCCS.CCS))
 	} else if request.Type == "getCCS" {
 		_, ccs := ethClient.GetCCS(request.GetCCS.ConfId)
@@ -151,7 +148,7 @@ func handleRequest(request *Request) {
 		userId = uuid.NewV4().String()
 
 		pbPack := &protocol.ProtobufPack{}
-		message := pbPack.CreateJoinConferenceRequest(request.Join.ConfId, userId,  userId)
+		message := pbPack.CreateJoinConferenceRequest(request.Join.ConfId, userId, userId)
 		node.SendMessage(ccsId, message)
 	} else if request.Type == "end" {
 		glog.Infof("end conference, confid: %v, ccsid: %v, userid: %v", request.End.ConfId, ccsId.Pretty(), userId)
@@ -171,7 +168,6 @@ func handleRequest(request *Request) {
 func main() {
 	flag.Set("logtostderr", "true")
 
-
 	ethAccount := flag.String("account", "0x673bf560ba83e2fc3bbb0c15c341918176785c7c", "ETH Account")
 	keystoreDir := flag.String("keystore_dir", "/Users/gangwan/blockchain/testnet/keystore", "Key store directory")
 	contractAddr := flag.String("contract_address", "0x15253be34b7ee592970dfc09d5b6a9d3205c6c34", "Contract address")
@@ -179,8 +175,8 @@ func main() {
 
 	flag.Parse()
 
-	lisAddr :=[] config.ListenAddress{{"127.0.0.1", 8101}}
-	cfgGasLimit := "0x8000000000"
+	lisAddr := []config.ListenAddress{{"127.0.0.1", 8101}}
+	cfgGasLimit := "0x800000"
 	cfgGasPrice := 20
 	password := "pass"
 
@@ -204,9 +200,8 @@ func main() {
 	//message := pbPack.CreateJoinConferenceRequest(uuid.NewV4().String(), uuid.NewV4().String(),  "client1")
 	//node.SendMessage(id, message)
 
-
 	glog.Infof("EthAccount: %s, KeystoreDir: %s, GethRPCPath: %s, ContractAddr: %s", *ethAccount, *keystoreDir, *gethRPCPath, *contractAddr)
-	ethClient, err = basiceth.NewBasicClient(*ethAccount, *keystoreDir, *gethRPCPath, *contractAddr)
+	ethClient, err = basiceth.NewBasicClient(*ethAccount, *keystoreDir, *gethRPCPath, "", *contractAddr)
 	if err != nil {
 		glog.Errorf("Create basic eth client fail: ", err)
 		return
@@ -248,8 +243,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(*HTTPAddr, nil))
 }
 
-type ConferenceScheduledEventMessage  struct {
-	Type string
+type ConferenceScheduledEventMessage struct {
+	Type                     string
 	ConferenceScheduledEvent *events.ConferenceScheduledEventData
 }
 
@@ -265,7 +260,7 @@ func ConferenceScheduledEventHandler(eventData *events.ConferenceScheduledEventD
 	wsClient.Send <- data
 }
 
-type ListAllCCSMessage  struct {
+type ListAllCCSMessage struct {
 	Type string
 	CCSS []eth.CCS
 }
@@ -283,8 +278,8 @@ func handleListAllCCS(ccss []eth.CCS) {
 }
 
 type GetCCSMessage struct {
-	Type string
-	CCS eth.CCS
+	Type   string
+	CCS    eth.CCS
 	ConfId string
 }
 
@@ -301,23 +296,23 @@ func handleGetAllCCS(confId string, ccs eth.CCS) {
 	wsClient.Send <- data
 }
 
-type RspMessage  struct {
-	Type string
+type RspMessage struct {
+	Type   string
 	Result int32
 }
 
-type EndIndicationMessage  struct {
-	Type string
+type EndIndicationMessage struct {
+	Type   string
 	ConfId string
 }
 
-type RosterMessage  struct {
-	Type string
-	Participants         []*dvc_protocol.Participant
+type RosterMessage struct {
+	Type         string
+	Participants []*dvc_protocol.Participant
 }
 
-func  MessageHandler(id peer.ID, message *dvc_protocol.DVCMessage) {
-	glog.Infof("Receive message type %s from id %s", message.Type, id.Pretty() )
+func MessageHandler(id peer.ID, message *dvc_protocol.DVCMessage) {
+	glog.Infof("Receive message type %s from id %s", message.Type, id.Pretty())
 
 	if message.GetType() == dvc_protocol.DVCMessage_JoinConferenceResponse {
 		rsp := message.GetJoinConfRsp()

@@ -16,7 +16,7 @@ import (
 )
 
 // CCSServiceABI is the input ABI used to generate the binding from.
-const CCSServiceABI = "[{\"constant\":true,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"getCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFirstCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getNextCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"port\",\"type\":\"int256\"},{\"name\":\"peerId\",\"type\":\"string\"}],\"name\":\"registerCCS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"ccsAddress\",\"type\":\"address\"}],\"name\":\"newJob\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"ccsAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"ip\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"port\",\"type\":\"int256\"},{\"indexed\":false,\"name\":\"peerId\",\"type\":\"string\"}],\"name\":\"NewJobCreated\",\"type\":\"event\"}]"
+const CCSServiceABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"completeJob\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"}],\"name\":\"getCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"serviceManager\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFirstCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getNextCCS\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"fixedSupplyToken\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ip\",\"type\":\"string\"},{\"name\":\"port\",\"type\":\"int256\"},{\"name\":\"peerId\",\"type\":\"string\"}],\"name\":\"registerCCS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"confId\",\"type\":\"string\"},{\"name\":\"ccsAddress\",\"type\":\"address\"}],\"name\":\"newJob\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"serviceManagerAddr\",\"type\":\"address\"},{\"name\":\"tokenAddr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"confId\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"ccsAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"ip\",\"type\":\"string\"},{\"indexed\":false,\"name\":\"port\",\"type\":\"int256\"},{\"indexed\":false,\"name\":\"peerId\",\"type\":\"string\"}],\"name\":\"NewJobCreated\",\"type\":\"event\"}]"
 
 // CCSService is an auto generated Go binding around an Ethereum contract.
 type CCSService struct {
@@ -160,6 +160,32 @@ func (_CCSService *CCSServiceTransactorRaw) Transact(opts *bind.TransactOpts, me
 	return _CCSService.Contract.contract.Transact(opts, method, params...)
 }
 
+// FixedSupplyToken is a free data retrieval call binding the contract method 0xd5ed1a83.
+//
+// Solidity: function fixedSupplyToken() constant returns(address)
+func (_CCSService *CCSServiceCaller) FixedSupplyToken(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _CCSService.contract.Call(opts, out, "fixedSupplyToken")
+	return *ret0, err
+}
+
+// FixedSupplyToken is a free data retrieval call binding the contract method 0xd5ed1a83.
+//
+// Solidity: function fixedSupplyToken() constant returns(address)
+func (_CCSService *CCSServiceSession) FixedSupplyToken() (common.Address, error) {
+	return _CCSService.Contract.FixedSupplyToken(&_CCSService.CallOpts)
+}
+
+// FixedSupplyToken is a free data retrieval call binding the contract method 0xd5ed1a83.
+//
+// Solidity: function fixedSupplyToken() constant returns(address)
+func (_CCSService *CCSServiceCallerSession) FixedSupplyToken() (common.Address, error) {
+	return _CCSService.Contract.FixedSupplyToken(&_CCSService.CallOpts)
+}
+
 // GetCCS is a free data retrieval call binding the contract method 0x339fcb3f.
 //
 // Solidity: function getCCS(confId string) constant returns(address, string, int256, string)
@@ -286,6 +312,27 @@ func (_CCSService *CCSServiceSession) ServiceManager() (common.Address, error) {
 // Solidity: function serviceManager() constant returns(address)
 func (_CCSService *CCSServiceCallerSession) ServiceManager() (common.Address, error) {
 	return _CCSService.Contract.ServiceManager(&_CCSService.CallOpts)
+}
+
+// CompleteJob is a paid mutator transaction binding the contract method 0x103d2da2.
+//
+// Solidity: function completeJob(addr address) returns()
+func (_CCSService *CCSServiceTransactor) CompleteJob(opts *bind.TransactOpts, addr common.Address) (*types.Transaction, error) {
+	return _CCSService.contract.Transact(opts, "completeJob", addr)
+}
+
+// CompleteJob is a paid mutator transaction binding the contract method 0x103d2da2.
+//
+// Solidity: function completeJob(addr address) returns()
+func (_CCSService *CCSServiceSession) CompleteJob(addr common.Address) (*types.Transaction, error) {
+	return _CCSService.Contract.CompleteJob(&_CCSService.TransactOpts, addr)
+}
+
+// CompleteJob is a paid mutator transaction binding the contract method 0x103d2da2.
+//
+// Solidity: function completeJob(addr address) returns()
+func (_CCSService *CCSServiceTransactorSession) CompleteJob(addr common.Address) (*types.Transaction, error) {
+	return _CCSService.Contract.CompleteJob(&_CCSService.TransactOpts, addr)
 }
 
 // NewJob is a paid mutator transaction binding the contract method 0xefe4c5cc.
